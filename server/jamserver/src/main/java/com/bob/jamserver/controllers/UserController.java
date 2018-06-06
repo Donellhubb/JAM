@@ -23,14 +23,14 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/signup")
-	public String userSign(@Valid @RequestBody User user,BindingResult result) {
+	@RequestMapping("/register")
+	public String userSign(@Valid @RequestBody User user, BindingResult result) {
 		if(result.hasErrors()) {
 			System.out.println(result);
 			return "Unsuccessful";
 		}
 		userService.saveUser(user);
-		return "Signupsuccessful";
+		return "registerSuccess";
 	}
 	
 	@RequestMapping("/login")
@@ -42,8 +42,10 @@ public class UserController {
 		System.out.println(user.getPassword());
 		if(userService.checkEmailExists(user.getEmail())){
 				if(userService.authenticateUser(user.getEmail(),user.getPassword())) {
-					userService.generateToken();
-					data.put("token",userService.generateToken());
+					String token = userService.updateToken(user.getEmail());
+					
+					data.put("token",token);
+					
 					data.put("msg", "LoginSuccessful" );
 					return data;
 				}else {
@@ -52,7 +54,7 @@ public class UserController {
 					return data;
 				}
 		}else {
-			data.put("msg","EmailDoeNotExist" );
+			data.put("msg","EmailDoesNotExist" );
 			return data;
 		}
 			

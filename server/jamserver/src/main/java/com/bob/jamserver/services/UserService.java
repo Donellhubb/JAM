@@ -39,7 +39,7 @@ public class UserService {
 	
 	public boolean authenticateUser(String email,String pwd) {
 		User userFound = userRepo.findByEmail(email);
-		System.out.println("in service "+userFound.getPassword());
+		System.out.println("in service password "+userFound.getPassword());
 		if(bcrypt.matches(pwd, userFound.getPassword())){
 			return true;
 		}else {
@@ -55,9 +55,18 @@ public class UserService {
 	    for(int i = 0; i < bytes.length;i++) {
 	    	st+=bytes[i];
 	    }
-	    System.out.println("in token class "+st);
+//	    System.out.println("in token class "+st);
 //	String uuid = UUID.randomUUID().toString();
     return st;
+	}
+	
+	public String updateToken(String email) {
+	 User user = userRepo.findByEmail(email);
+	 String token = generateToken();
+	 user.setToken(token);
+	 userRepo.save(user);
+	 System.out.println("in update token "+token);
+	 return token;
 	}
 
 }
