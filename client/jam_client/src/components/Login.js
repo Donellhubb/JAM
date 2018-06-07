@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import url from '../url';
+import '../index.js';
 
 class Login extends Component{
   constructor(){
@@ -19,7 +21,7 @@ class Login extends Component{
 
   	const loginRequest = axios({
   		method: "POST",
-  		url: "http://localhost:8080/login",
+  		url: url.url + "login",
   		data:{
   			email,
   			password
@@ -27,10 +29,10 @@ class Login extends Component{
   	})
 
   	loginRequest.then((userData)=>{
-  		// console.log(userData.data)
-  		if(userData.data.msg === "loginSuccess" ){
+  		console.log("yo");
+  		if(userData.data.msg === "LoginSuccessful" ){
   		    localStorage.setItem('token',userData.data.token)
-  		    this.props.history.push('/')
+  		    this.props.history.push('/jobs')
           // console.log(localStorage.token)
   		} 
   		// else {
@@ -41,6 +43,7 @@ class Login extends Component{
 
 
   render(){
+    // console.log(url.url)
   	// JSX DEMANDS all self-closing tags, be closed with a /
     return(
     <div className="container">

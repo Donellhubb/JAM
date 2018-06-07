@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import url from '../url';
 
 class Register extends Component{
   constructor(){
@@ -23,9 +24,8 @@ class Register extends Component{
 
     const registerRequest = axios({
       method: "POST",
-      url: "http://localhost:8080/register",
+      url: url.url + "/register",
       data: {
-
         first_name,
         last_name,
         email,
