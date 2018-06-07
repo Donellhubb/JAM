@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import url from '../url';
-import '../index.js';
+import '../index.css';
 
 class Login extends Component{
   constructor(){
