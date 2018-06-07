@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Jobs from './components/Jobs';
 import NavBar from './components/NavBar';
+import SingleJob from './components/SingleJob';
 import './App.css';
 
 class App extends Component {
@@ -14,7 +15,8 @@ class App extends Component {
           <Route path = "/" component={NavBar}/>
           <Route exact path = "/login" component={Login}/>
           <Route exact path = "/register" component={Register}/>  
-          <Route exact path = "/jobs" component={Jobs} />     
+          <Route exact path = "/jobs" component={Jobs} />
+          <Route path="/job/:job_id" component={SingleJob} />    
         </div>
       </Router>
     );

@@ -40,6 +40,7 @@ class Jobs extends Component{
 							<h2> Job# {data.id} </h2>
 							<hr />
 							<h4> Time: {data.time} </h4>
+							<h4> Description: {data.description} </h4>
 						</Link>
 					</div>
 				</li>
