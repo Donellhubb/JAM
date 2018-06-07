@@ -31,6 +31,17 @@ public class Cabinet {
 	Job job;
 	
 	public Cabinet() {}
+	
+	
+	public Job getJob() {
+		return job;
+	}
+
+
+	public void setJob(Job job) {
+		this.job = job;
+	}
+
 
 	public Long getId() {
 		return id;
