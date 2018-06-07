@@ -11,24 +11,22 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="users")
-public class User {
-	
+@Table(name="customer")
+public class Customer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	private String first_name;
 	private String last_name;
-	private String token;
 	private String email;
-	private String password;
-	@OneToMany(mappedBy="user",fetch=FetchType.LAZY)
+	private String phone;
+	private String address;
+	
+	@OneToMany(mappedBy="customer",fetch=FetchType.LAZY)
 	List<Job> jobs;
 	
-	public User() {
-		
-	}
+	public Customer() {}
 
 	public Long getId() {
 		return id;
@@ -54,14 +52,6 @@ public class User {
 		this.last_name = last_name;
 	}
 
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -70,13 +60,32 @@ public class User {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public List<Job> getJobs() {
+		return jobs;
+	}
+
+	public void setJobs(List<Job> jobs) {
+		this.jobs = jobs;
+	}
+	
+	
+	
+	
 
 }
-
