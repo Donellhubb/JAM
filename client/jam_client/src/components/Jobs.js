@@ -21,15 +21,11 @@ class Jobs extends Component{
 			}
 		});
 
-		getToken.then((jobArray)=>{
-			if(jobArray.data.jobs[0] != null){
-				this.setState({
-					jobs: jobArray.data.jobs
-				})
-			}
-			else{
-				console.log("No Jobs Found")
-			}
+		getToken.then((jobData)=>{
+			// console.log("are there jobss",jobData.data);
+			this.setState({
+				jobs: jobData.data
+			})
 		})
 	}
 

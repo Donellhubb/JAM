@@ -1,14 +1,12 @@
 package com.bob.jamserver.services;
 
-import java.security.SecureRandom;
-import java.util.UUID;
-
+import com.bob.jamserver.model.User;
+import com.bob.jamserver.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.bob.jamserver.model.User;
-import com.bob.jamserver.repositories.UserRepository;
+import java.security.SecureRandom;
 
 
 @Service
@@ -39,7 +37,7 @@ public class UserService {
 	
 	public boolean authenticateUser(String email,String pwd) {
 		User userFound = userRepo.findByEmail(email);
-		System.out.println("in service password "+userFound.getPassword());
+//		System.out.println("in service password "+userFound.getPassword());
 		if(bcrypt.matches(pwd, userFound.getPassword())){
 			return true;
 		}else {
@@ -67,6 +65,12 @@ public class UserService {
 	 userRepo.save(user);
 	 System.out.println("in update token "+ token);
 	 return token;
+	}
+
+
+	public User findByToken(String token){
+		User user = userRepo.findByToken(token);
+		return user;
 	}
 
 }

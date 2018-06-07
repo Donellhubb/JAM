@@ -14,7 +14,7 @@ import java.util.List;
 
 
 
-@CrossOrigin(origins="http://192.168.88.47:3000")
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 public class UserController {
 	HashMap<String,String> data = new HashMap<String,String>();
@@ -61,18 +61,15 @@ public class UserController {
 			
 		
 	}
-	
-	@RequestMapping(value="/jobs",method=RequestMethod.POST)
-	public HashMap<String,List<Job>> userJobs(@RequestBody User user) {
-		if(data.containsValue(user.getToken())) {
-			user.getJobs();
-			UserJobs.put("jobs", user.getJobs());
-			
-			
-			return UserJobs;
-		}
-			
-		return UserJobs;	
-	}
 
+	@RequestMapping(value="/jobs",method=RequestMethod.POST)
+	public List<Job>  userJobs(@RequestBody User user) {
+		List<Job> empty = new ArrayList<Job>();
+		if (data.containsValue(user.getToken())) {
+			User empl = userService.findByToken(user.getToken());
+//			System.out.println("");
+			return empl.getJobs();
+		}
+		return empty;
+	}
 }
