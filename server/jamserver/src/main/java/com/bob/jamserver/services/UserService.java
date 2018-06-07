@@ -65,7 +65,7 @@ public class UserService {
 	 String token = generateToken();
 	 user.setToken(token);
 	 userRepo.save(user);
-	 System.out.println("in update token "+token);
+	 System.out.println("in update token "+ token);
 	 return token;
 	}
 

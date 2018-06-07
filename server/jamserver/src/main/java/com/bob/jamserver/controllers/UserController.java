@@ -49,7 +49,7 @@ public class UserController {
 					data.put("msg", "LoginSuccessful" );
 					return data;
 				}else {
-					data.clear();
+			
 					data.put("msg","WrongPassword" );
 					return data;
 				}
