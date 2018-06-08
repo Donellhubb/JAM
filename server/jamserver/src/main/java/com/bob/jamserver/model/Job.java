@@ -17,6 +17,7 @@ public class Job {
    private String description;
    @ManyToOne(fetch= FetchType.LAZY)
    @JoinColumn(name = "user_id")
+   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
    private User user;
    
    @ManyToOne(fetch=FetchType.LAZY)

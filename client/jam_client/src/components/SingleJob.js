@@ -19,13 +19,14 @@ class SingleJob extends Component{
 			method: "POST",
 			url: url.url + "customer",
 			data:{
-				job_id: this.props.match.params.job_id
+				id: this.props.match.params.job_id
 			}
 		});
 
 		getCustomerJob.then((data)=>{
+			console.log(data);
 			this.setState({
-				jobs: data.data.job,
+				job: data.data,
 				customer: data.data.customer
 			})
 		})
@@ -34,7 +35,7 @@ class SingleJob extends Component{
 
 	render(){
 
-		console.log(this.state.jobs)
+		// console.log(this.state.job.description)
 		const loggedIn= localStorage.token;
 		// console.log(this.props)
 		// console.log(loggedIn)
