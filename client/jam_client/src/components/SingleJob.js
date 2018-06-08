@@ -12,12 +12,13 @@ class SingleJob extends Component{
 		}
 	}
 
+
+
 	componentDidMount(){
 		const getCustomerJob = axios({
 			method: "POST",
 			url: url.url + "customer",
 			data:{
-				token: this.state.token,
 				job_id: this.props.match.params.job_id
 			}
 		});
@@ -32,12 +33,21 @@ class SingleJob extends Component{
 
 
 	render(){
-		console.log(this.props.match.params.job_id)
+
+		console.log(this.state.jobs)
+		const loggedIn= localStorage.token;
+		// console.log(this.props)
+		// console.log(loggedIn)
+
 		return(
 			<div className='container'>
-				Amos is a b*****
+				{loggedIn == undefined
+					?
+					<h1>Amos is a b*****</h1>
+					:
+					<h1>WE In HERE</h1>
+				}
 			</div>
-
 		)
 	}
 }

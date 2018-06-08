@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import url from '../url';
 import {Link} from 'react-router-dom';
+import SingleJob from './SingleJob';
 
 class Jobs extends Component{
 	constructor(){
@@ -23,7 +24,7 @@ class Jobs extends Component{
 
 		getToken.then((jobData)=>{
 			 console.log("are there jobss",jobData.data);
-			 console.log(jobData.data[0].customer.id)
+			 // console.log(jobData.data[0].customer.id)
 			this.setState({
 				jobs: jobData.data
 			})
