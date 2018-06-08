@@ -22,7 +22,7 @@ import com.bob.jamserver.services.UserService;
 
 
 
-@CrossOrigin
+
 @RestController
 public class UserController {
 	HashMap<String,String> data = new HashMap<String,String>();
@@ -44,6 +44,7 @@ public class UserController {
 		return "registerSuccess";
 	}
 	
+	@CrossOrigin
 	@RequestMapping("/login")
 	public HashMap<String,String> userLogin(@Valid @RequestBody User user, BindingResult result) {
 		System.out.println("in login ");
