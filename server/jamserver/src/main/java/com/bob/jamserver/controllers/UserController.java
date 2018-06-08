@@ -70,16 +70,11 @@ public class UserController {
 	@RequestMapping(value="/jobs",method=RequestMethod.POST)
 	public  List<Job> userJobs(@RequestBody User user) {
 		List<Job> empty = new ArrayList<Job>();
-		System.out.println("in userJobs "+user.getToken());
 		if (data.containsValue(user.getToken())) {
 			User empl = userService.findByToken(user.getToken());
 			empl.getId();
-			System.out.println(empl.getId());
 			jobService.findUserJobs(empl.getId());
-			System.out.println(jobService.findUserJobs(empl.getId()));
 			System.out.println("successful ");
-			System.out.println(jobService.findUserJobs(empl.getId()).size());
-
 			return jobService.findUserJobs(empl.getId());
 		}
 		return empty;
