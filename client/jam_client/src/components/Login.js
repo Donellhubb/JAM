@@ -32,6 +32,7 @@ class Login extends Component{
   		// console.log("yo");
   		if(userData.data.msg === "LoginSuccessful" ){
   		    localStorage.setItem('token',userData.data.token)
+          console.log("LoginSuccessful");
   		    this.props.history.push('/jobs')
           // console.log(localStorage.token)
   		} 

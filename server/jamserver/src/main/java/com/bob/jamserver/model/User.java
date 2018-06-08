@@ -1,7 +1,17 @@
 package com.bob.jamserver.model;
 
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="users")
@@ -16,28 +26,37 @@ public class User {
 	private String token;
 	private String email;
 	private String password;
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id")
-	List<Job> jobs;
+//	@OneToMany(fetch=FetchType.LAZY)
+//	@JoinColumn(name="user_id")
+//	private List<Job> jobs;
 	
 	public User() {
 		
 	}
 	
 
-	public List<Job> getJobs() {
-		return jobs;
-	}
+//	public List<Job> getJobs() {
+//		return jobs;
+//	}
+//
+//
+//	public void setJobs(List<Job> jobs) {
+//		this.jobs = jobs;
+//	}
 
 
-	public void setJobs(List<Job> jobs) {
-		this.jobs = jobs;
-	}
+	
 
 
 	public Long getId() {
 		return id;
 	}
+
+	
+
+
+	
+
 
 	public void setId(Long id) {
 		this.id = id;

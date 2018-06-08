@@ -1,26 +1,37 @@
 package com.bob.jamserver.model;
 
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="customer")
 public class Customer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-
 	private Long id;
-
+	
 	private String first_name;
 	private String last_name;
 	private String email;
 	private String phone;
 	private String address;
-	@OneToMany(fetch=FetchType.LAZY)
-	@JoinColumn(name="customer_id")
-
-	List<Job> jobs;
 	
+//	@OneToMany(mappedBy="customer")
+//	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//	private List<Job> jobs;
+//	
 	public Customer() {}
 
 	public Long getId() {
@@ -71,13 +82,16 @@ public class Customer {
 		this.address = address;
 	}
 
-	public List<Job> getJobs() {
-		return jobs;
-	}
+//	public List<Job> getJobs() {
+//		return jobs;
+//	}
+//
+//	public void setJobs(List<Job> jobs) {
+//		this.jobs = jobs;
+//	}
 
-	public void setJobs(List<Job> jobs) {
-		this.jobs = jobs;
-	}
+
+	
 	
 	
 	
