@@ -34,6 +34,7 @@ class Jobs extends Component{
 
 
 	render(){
+		// console.log(this.state.jobs)
 		const jobs = this.state.jobs.map((data, index)=>{
 			return(
 				<li>
@@ -57,8 +58,6 @@ class Jobs extends Component{
 			</div>
 		)
 	}
-
-
 } 
 
 export default Jobs;

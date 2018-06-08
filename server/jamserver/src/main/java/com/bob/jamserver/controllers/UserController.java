@@ -1,28 +1,21 @@
 package com.bob.jamserver.controllers;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.bob.jamserver.model.Job;
 import com.bob.jamserver.model.User;
 import com.bob.jamserver.services.JobService;
 import com.bob.jamserver.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 
-
+@CrossOrigin
 @RestController
 public class UserController {
 	HashMap<String,String> data = new HashMap<String,String>();
@@ -33,7 +26,7 @@ public class UserController {
 	
 	@Autowired
 	private JobService jobService;
-	
+
 	@RequestMapping("/register")
 	public String userSign(@Valid @RequestBody User user, BindingResult result) {
 		if(result.hasErrors()) {
@@ -43,8 +36,8 @@ public class UserController {
 		userService.saveUser(user);
 		return "registerSuccess";
 	}
-	
-	@CrossOrigin
+
+
 	@RequestMapping("/login")
 	public HashMap<String,String> userLogin(@Valid @RequestBody User user, BindingResult result) {
 		System.out.println("in login ");
@@ -54,26 +47,26 @@ public class UserController {
 		}
 		System.out.println(user.getPassword());
 		if(userService.checkEmailExists(user.getEmail())){
-				if(userService.authenticateUser(user.getEmail(),user.getPassword())) {
-					String token = userService.updateToken(user.getEmail());
-					System.out.println("user exists");
-					data.put("token",token);
-					
-					data.put("msg", "LoginSuccessful" );
-					return data;
-				}else {
-			
-					data.put("msg","WrongPassword" );
-					return data;
-				}
+			if(userService.authenticateUser(user.getEmail(),user.getPassword())) {
+				String token = userService.updateToken(user.getEmail());
+				System.out.println("user exists");
+				data.put("token",token);
+
+				data.put("msg", "LoginSuccessful" );
+				return data;
+			}else {
+
+				data.put("msg","WrongPassword" );
+				return data;
+			}
 		}else {
 			data.put("msg","EmailDoesNotExist" );
 			return data;
 		}
-			
-		
+
+
 	}
-	
+
 	@RequestMapping(value="/jobs",method=RequestMethod.POST)
 	public  List<Job> userJobs(@RequestBody User user) {
 		List<Job> empty = new ArrayList<Job>();

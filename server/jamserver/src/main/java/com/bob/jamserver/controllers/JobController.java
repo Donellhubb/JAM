@@ -11,7 +11,7 @@ import com.bob.jamserver.model.Customer;
 import com.bob.jamserver.model.Job;
 import com.bob.jamserver.services.JobService;
 
-@CrossOrigin(origins="http://192.168.88.47")
+@CrossOrigin
 @RestController
 public class JobController{
 	@Autowired
