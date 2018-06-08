@@ -1,37 +1,50 @@
 package com.bob.jamserver.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name= "job")
+
 public class Job {
    @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
    
+   
    private String time;
    private String description;
-//   @ManyToOne(fetch= FetchType.LAZY)
-//   @JoinColumn(name = "user_id")
-//   User user;
-
-//   @ManyToOne(fetch=FetchType.LAZY)
-//   @JoinColumn(name="customer_id")
-//   Customer customer;
+   @ManyToOne(fetch= FetchType.LAZY)
+   @JoinColumn(name = "user_id")
+   private User user;
+   
+   @ManyToOne(fetch=FetchType.LAZY)
+   @JoinColumn(name="customer_id")
+   @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+   private  Customer customer;
    
    public Job() {
 	   
    }
 
 
-//   public User getUser() {
-//	return user;
-//}
+   public User getUser() {
+	return user;
+}
 
 
-//public void setUser(User user) {
-//	this.user = user;
-//}
+public void setUser(User user) {
+	this.user = user;
+}
 
 
 public String getDescription() {
@@ -42,13 +55,13 @@ public void setDescription(String description) {
 	this.description = description;
 }
 
-//public Customer getCustomer() {
-//	return customer;
-//}
-//
-//public void setCustomer(Customer customer) {
-//	this.customer = customer;
-//}
+public Customer getCustomer() {
+	return customer;
+}
+
+public void setCustomer(Customer customer) {
+	this.customer = customer;
+}
 
 
    public Long getId() {
@@ -67,5 +80,8 @@ public void setDescription(String description) {
        this.time = time;
    }
 
+   
+
+   
 
 }
