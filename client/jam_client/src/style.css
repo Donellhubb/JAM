@@ -1,0 +1,35 @@
+.jobs-list{
+	list-style-type: none;
+}
+
+
+/*SingleJob page*/
+
+#customer_info{
+	text-align: left;
+}
+
+li.active{
+	/*border-bottom: 10px solid red;*/
+	text-decoration: underline;
+	font-weight: bold
+}
+
+#tab_form-tab-1, #tab_form-tab-2, #tab_form-tab-3, #tab_form-tab-4{
+	color:inherit;
+	text-decoration-color: red;
+}
+.nav.nav-tabs{
+	font-size: 150%;
+}
+
+label.active{
+	background-color: blue;
+}
+
+
+@media only screen and (max-width: 600px) {
+	.nav.nav-tabs{
+		font-size: 100%;
+	}
+}
