@@ -1,45 +1,85 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import url from '../url';
-import {FormGroup, ControlLabel, FormControl, NumericInput} from 'react-bootstrap';
+import {FormGroup, ControlLabel, FormControl, Button} from 'react-bootstrap';
 
 class Cabinet extends Component{
   constructor(){
     super();
     this.state={
-      cabinet: []
+      job_id: "",
+      cabinet: {}
     }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount(){
+    this.setState={
+      job_id : this.props.job_id
+    }
     document.getElementById('cabinet_quantity').setAttribute("value", "1");
-    document.getElementById('cabinet_hinges').setAttribute("value", "2");
-    document.getElementById('cabinet_screws').setAttribute("value", "8");
+    document.getElementById('cabinet_hinges').setAttribute("value", "1");
+    document.getElementById('cabinet_screws').setAttribute("value", "4");
+    document.getElementById('cabinet_height').setAttribute("value", "15");
+    document.getElementById('cabinet_width').setAttribute("value", "34.5");
   }
 
   handleQuantity(){
     let quantity = document.getElementById('cabinet_quantity');
     let hinges = document.getElementById('cabinet_hinges');
     let screws = document.getElementById('cabinet_screws');
-    const numHinges = (quantity.value * 2);
+    const numHinges = (quantity.value * 1);
     hinges.setAttribute("value", numHinges);
     const numScrews = (numHinges * 4);
     screws.setAttribute("value", numScrews)
   }
 
+  handleSubmit(event){
+    event.preventDefault()
+    //const type = document.getElementById('cabinet_type').value
+    const type = document.getElementById('cabinet_hinges').value
+    const hinges = document.getElementById('cabinet_hinges').value
+    const screws = document.getElementById('cabinet_screws').value
+    const quantity = document.getElementById('cabinet_quantity').value
+    const color = document.getElementById('cabinet_color').value
+    const height = document.getElementById('cabinet_height').value
+    const width = document.getElementById('cabinet_width').value
+    const job = this.props.job_id
+
+    const cabinetCreate = axios({
+        method: "POST",
+        url: "http://192.168.88.181:8080/cabinet/create",
+        data: {
+          job,
+          type,
+          hinges,
+          screws,
+          quantity,
+          color,
+          height,
+          width  
+        }
+    })
+    
+    cabinetCreate.then(data =>{
+      console.log(data)
+    })
+  }
 
 
   render(){
     return(
       <div className="container">
         <div className="modal-body row">
-              <form>
+              <form onSubmit={this.handleSubmit}>
                 <div className="col-md-6">
               <FormGroup controlId="formControlsSelect">
                   <ControlLabel>Cabinet Type</ControlLabel>
                     <FormControl componentClass="select" placeholder="Cabinet Type" id="cabinet_type" bsSize="large">
-                      <option value="Wood">Wood</option>
-                      <option value="Steel">Steel</option>
+                      <option value="Solid Wood">Solid Wood</option>
+                      <option value="Rigid Thermofoil">Rigid Thermofoil</option>
+                      <option value="Bamboo">Bamboo</option>
                     </FormControl>
                 </FormGroup>
 
@@ -90,7 +130,8 @@ class Cabinet extends Component{
                     </FormGroup>
                   </div>
                 </div>
-            </div>
+              </div>
+              <Button type="submit">Submit</Button>
             </form>
         </div>
       </div>
