@@ -69,7 +69,7 @@ class SingleJob extends Component{
 									<Window />
 								</Tab>
 								<Tab eventKey={3} title="Cabinet">
-									<Cabinet />
+									<Cabinet job_id={this.state.job}/>
 								</Tab>
 								<Tab eventKey={4} title="Review/Edit">
 									<Review />

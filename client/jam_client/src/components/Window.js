@@ -1,25 +1,58 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import url from '../url';
-import {FormGroup, ControlLabel, FormControl, NumericInput} from 'react-bootstrap';
+import {FormGroup, ControlLabel, FormControl, Button} from 'react-bootstrap';
 
 class Window extends Component{
   constructor(props){
     super(props);
     this.state={
-      window: []
+      job_id: "",
+      window: {}
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount(){
+    this.setState={
+      job_id : this.props.job_id
+    }
     document.getElementById('window_quantity').setAttribute("value", "1");
+    document.getElementById('window_height').setAttribute("value", "24");
+    document.getElementById('window_width').setAttribute("value", "24");
   }
+
+  handleSubmit(event){
+    event.preventDefault()
+    const type = document.getElementById('window_type').value
+    const height = document.getElementById('window_height').value
+    const width = document.getElementById('window_width').value
+    const quantity = document.getElementById('window_quantity').value
+    const color = document.getElementById('window_color').value
+    const job = this.props.job_id
+    const windowCreate = axios({
+      method: 'POST',
+      url: "http://192.168.88.181:8080/window/create",
+      data:{
+        job,
+        type,
+        height,
+        width,
+        quantity,
+        color
+      }
+    })
+    windowCreate.then(data=>{
+      console.log(data)
+    })
+  }
+
 
   render(){
     return(
       <div className="container">
         <div className="modal-body row">
-              <form>
+              <form onSubmit={this.handleSubmit}>
                 <div className="col-md-6">
               <FormGroup controlId="formControlsSelect">
                   <ControlLabel>Window Type</ControlLabel>
@@ -70,7 +103,8 @@ class Window extends Component{
                     </FormGroup>
                   </div>
                 </div>
-            </div>
+              </div>
+              <Button type="submit">Submit</Button>
             </form>
         </div>
       </div>

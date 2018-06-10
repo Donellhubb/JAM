@@ -50,7 +50,6 @@ class Door extends Component{
 		// console.log(hinges)
 		const screws = document.getElementById('door_screws').value
 		// console.log(screws)
-		const job_id = 6
 		// console.log(job_id)
 		const job = this.props.job_id
 		// console.log(job);
