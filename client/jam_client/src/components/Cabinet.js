@@ -120,13 +120,13 @@ class Cabinet extends Component{
                   <div className="col-md-4">
                     <FormGroup bsSize="large">
                         <ControlLabel>Hinges</ControlLabel>
-                      <FormControl type="number" placeholder="2" id="cabinet_hinges" min="2" />
+                      <FormControl type="number" placeholder="2" id="cabinet_hinges" min="1" />
                     </FormGroup>
                   </div>
                   <div className="col-md-4">
                     <FormGroup bsSize="large">
                         <ControlLabel>Screws</ControlLabel>
-                      <FormControl type="number" placeholder="8" id="cabinet_screws" min="8" />
+                      <FormControl type="number" placeholder="8" id="cabinet_screws" min="4" />
                     </FormGroup>
                   </div>
                 </div>
