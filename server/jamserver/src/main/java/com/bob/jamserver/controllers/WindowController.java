@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bob.jamserver.model.Window;
 import com.bob.jamserver.services.WindowService;
 
 @CrossOrigin(origins="http://localhost:3000")
