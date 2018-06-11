@@ -43,7 +43,9 @@ class Window extends Component{
       }
     })
     windowCreate.then(data=>{
-      console.log(data)
+      this.props.updateWindow(data);
+
+      // console.log("YOO")
     })
   }
 

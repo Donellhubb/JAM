@@ -63,7 +63,7 @@ class Cabinet extends Component{
     })
     
     cabinetCreate.then(data =>{
-      console.log(data)
+      this.props.updateCabinet(data);
     })
   }
 
