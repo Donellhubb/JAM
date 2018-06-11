@@ -22,7 +22,7 @@ class Cabinet extends Component{
     document.getElementById('cabinet_hinges').setAttribute("value", "1");
     document.getElementById('cabinet_screws').setAttribute("value", "4");
     document.getElementById('cabinet_height').setAttribute("value", "15");
-    document.getElementById('cabinet_width').setAttribute("value", "34.5");
+    document.getElementById('cabinet_width').setAttribute("value", "34");
   }
 
   handleQuantity(){
@@ -38,7 +38,7 @@ class Cabinet extends Component{
   handleSubmit(event){
     event.preventDefault()
     //const type = document.getElementById('cabinet_type').value
-    const type = document.getElementById('cabinet_hinges').value
+    const type = document.getElementById('cabinet_type').value
     const hinges = document.getElementById('cabinet_hinges').value
     const screws = document.getElementById('cabinet_screws').value
     const quantity = document.getElementById('cabinet_quantity').value
@@ -49,7 +49,7 @@ class Cabinet extends Component{
 
     const cabinetCreate = axios({
         method: "POST",
-        url: "http://192.168.88.181:8080/cabinet/create",
+        url: url.url + "cabinet/create",
         data: {
           job,
           type,
@@ -129,9 +129,9 @@ class Cabinet extends Component{
                       <FormControl type="number" placeholder="8" id="cabinet_screws" min="4" />
                     </FormGroup>
                   </div>
+                  <Button type="submit">Submit</Button>
                 </div>
               </div>
-              <Button type="submit">Submit</Button>
             </form>
         </div>
       </div>
