@@ -10,17 +10,24 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bob.jamserver.model.Cabinet;
 import com.bob.jamserver.services.CabinetService;
 
-@CrossOrigin(origins= "http://localhost:3000")
+import java.util.HashMap;
+import java.util.List;
+
+@CrossOrigin
 @RestController
 public class CabinetController {
 	
 	@Autowired
 	private CabinetService cabinetService;
-	
+
+	private HashMap<String,List<Cabinet>> cabinets = new HashMap<String, List<Cabinet>>();
+
 	@RequestMapping(value = "/cabinet/create", method = RequestMethod.POST)
-	public String createCabinet(@RequestBody Cabinet cabinet) {
-		cabinetService.createCabinet(cabinet);
-		return "CabinetCreatedSuccessfully";
+
+	public HashMap<String, List<Cabinet>> createCabinet(@RequestBody Cabinet cabinet) {
+
+		cabinets.put("CabinetCreatedSuccessfully",cabinetService.getCabinetsForJob(cabinet.getJob().getId()));
+		return cabinets ;
 	}
 
 }
