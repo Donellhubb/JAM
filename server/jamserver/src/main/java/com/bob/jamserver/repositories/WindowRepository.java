@@ -1,13 +1,15 @@
 package com.bob.jamserver.repositories;
 
-import java.util.List;
-
+import com.bob.jamserver.model.Window;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bob.jamserver.model.Window;
-
+import java.util.List;
 @Repository
+
+
 public interface WindowRepository extends CrudRepository<Window,Long> {
 	List<Window> findAll();
-	}
+	List<Window> findWindowsByJobID(Long id);
+
+}

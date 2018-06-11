@@ -1,26 +1,28 @@
 package com.bob.jamserver.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.bob.jamserver.model.Door;
 import com.bob.jamserver.services.DoorService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins="http://localhost:3000")
+import java.util.HashMap;
+import java.util.List;
+
+@CrossOrigin
 @RestController
 public class DoorController {
    @Autowired
    DoorService doorService;
+
+   HashMap<String, List<Door>> doors = new HashMap<String, List<Door>>();
    
 	@RequestMapping(value = "/door/create", method = RequestMethod.POST)
-	public String createDoor(@RequestBody Door door) {
+	public HashMap<String, List<Door>> createDoor(@RequestBody Door door) {
+
 		doorService.createDoor(door);
-		return "DoorSuccessfullyCreated";
-		
+		doors.put("DoorCreatedSuccessfully",doorService.getDoorsForJob(door.getJob().getId()));
+
+		return doors;
 	}
 
 }

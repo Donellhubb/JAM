@@ -13,6 +13,10 @@ public class JobService {
 	
 	@Autowired
 	JobRepository jobRepo;
+
+	public void createJob(Job job){
+		jobRepo.save(job);
+	}
 	
 	public List<Job> findUserJobs(Long userId){
 		return jobRepo.findJobsByUserId(userId);

@@ -1,15 +1,14 @@
 package com.bob.jamserver.repositories;
 
-import java.util.List;
-
+import com.bob.jamserver.model.Cabinet;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bob.jamserver.model.Cabinet;
+import java.util.List;
 
 @Repository
 public interface CabinetRepository extends CrudRepository<Cabinet, Long> {
-	
-	
+	List<Cabinet> findAll();
+	List<Cabinet> findCabinetsByJobId(Long Id);
 
 }
