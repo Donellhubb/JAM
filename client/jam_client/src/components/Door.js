@@ -140,9 +140,9 @@ class Door extends Component{
 	    								<FormControl type="number" placeholder="8" id="door_screws" min="8" />
 	  								</FormGroup>
 	  							</div>
+								<Button type="submit" bsStyle="primary">Submit</Button>
   							</div>
 						</div>
-						<Button type="submit">Submit</Button>
 				    </form>
 				</div>
 			</div>
