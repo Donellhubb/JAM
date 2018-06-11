@@ -56,7 +56,7 @@ class Door extends Component{
 
 		const doorCreate = axios({
 			method: "POST",
-			url: "http://192.168.88.181:8080/door/create",
+			url: url.url + "door/create",
 			data: {
 				job,
 				type,

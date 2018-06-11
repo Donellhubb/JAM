@@ -32,7 +32,7 @@ class Window extends Component{
     const job = this.props.job_id
     const windowCreate = axios({
       method: 'POST',
-      url: "http://192.168.88.181:8080/window/create",
+      url: url.url + "window/create",
       data:{
         job,
         type,
@@ -102,9 +102,9 @@ class Window extends Component{
                       <FormControl type="number" placeholder="1" id="window_quantity" min="1" />
                     </FormGroup>
                   </div>
+                  <Button type="submit">Submit</Button>
                 </div>
               </div>
-              <Button type="submit">Submit</Button>
             </form>
         </div>
       </div>
