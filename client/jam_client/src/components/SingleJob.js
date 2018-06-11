@@ -13,8 +13,14 @@ class SingleJob extends Component{
 		this.state={
 			token: localStorage.getItem('token'),
 			job:{},
-			customer:{}
+			customer:{},
+			window: [],
+			door: [],
+			cabinet: []
 		}
+		this.updateDoor = this.updateDoor.bind(this)
+		this.updateWindow = this.updateWindow.bind(this)
+		this.updateCabinet = this.updateCabinet.bind(this)
 	}
 
 	componentDidMount(){
@@ -35,6 +41,29 @@ class SingleJob extends Component{
 			// console.log(this.state.job);
 			// console.log(this.state.customer)
 		})
+	}
+
+	updateDoor(doorArr){
+		this.setState({
+			door: doorArr
+		})
+		// console.log("YOOOOOOO we hurrr: ")
+		// console.log(this.state.door)
+	}
+
+	updateWindow(windowArr){
+		this.setState({
+			window: windowArr
+		})
+		// console.log("YOOOOOOO we hurrr: ")
+		// console.log(this.state.window)
+	}
+
+	updateCabinet(cabinetArr){
+		this.setState({
+			cabinet: cabinetArr
+		})
+		// console.log(cabinetArr)
 	}
 
 	render(){
@@ -63,16 +92,16 @@ class SingleJob extends Component{
 
 							<Tabs defaultActiveKey={1} id="tab_form">
 								<Tab eventKey={1} title="Door">
-									<Door job_id={this.state.job}/>
+									<Door job_id={this.state.job} updateDoor={this.updateDoor}/>
 								</Tab>
 								<Tab eventKey={2} title="Window">
-									<Window job_id={this.state.job}/>
+									<Window job_id={this.state.job} updateWindow={this.updateWindow}/>
 								</Tab>
 								<Tab eventKey={3} title="Cabinet">
-									<Cabinet job_id={this.state.job}/>
+									<Cabinet job_id={this.state.job} updateCabinet={this.updateCabinet}/>
 								</Tab>
 								<Tab eventKey={4} title="Review/Edit">
-									<Review />
+									<Review cabinet={this.state.cabinet} window={this.state.window} door={this.state.door}/>
 								</Tab>
 							</Tabs>
 						</div>
