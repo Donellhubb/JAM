@@ -20,7 +20,14 @@ class CabinetEdit extends Component{
 			cabinet: this.props.cabinet,
 			job: this.props.cabinet.job,
 		})
-		// debugger
+		document.getElementById(`type${this.props.index}`).setAttribute("value", this.props.cabinet.type)
+		document.getElementById(`color${this.props.index}`).setAttribute("value", this.props.cabinet.color)
+		document.getElementById(`height${this.props.index}`).setAttribute("value", this.props.cabinet.height)
+		document.getElementById(`width${this.props.index}`).setAttribute("value", this.props.cabinet.width)
+		document.getElementById(`quantity${this.props.index}`).setAttribute("value", this.props.cabinet.quantity)
+		
+		document.getElementById(`hinges${this.props.index}`).setAttribute("value", this.props.cabinet.hinges)
+		document.getElementById(`screws${this.props.index}`).setAttribute("value", this.props.cabinet.screws)
 	}
 
 	handleSubmit(event){
@@ -32,10 +39,11 @@ class CabinetEdit extends Component{
 		const color = document.getElementById(`color${this.props.index}`).value;
 		const height = document.getElementById(`height${this.props.index}`).value;
 		const width = document.getElementById(`width${this.props.index}`).value;
+		
 		const quantity = document.getElementById(`quantity${this.props.index}`).value;
 		const hinges = document.getElementById(`hinges${this.props.index}`).value;
 		const screws = document.getElementById(`screws${this.props.index}`).value;
-
+		debugger
 		const updateCabinet = axios({
 			method: "POST",
 			url: url.url + "edit/cabinet",
@@ -74,7 +82,6 @@ class CabinetEdit extends Component{
 										<FormGroup controlId="formControlsSelect">
 											<ControlLabel>Cabinet Type</ControlLabel>
 											<FormControl componentClass="select" id={`type${this.props.index}`} bsSize="large">
-												<option value="" selected disabled>{this.state.cabinet.type}</option>
 												<option value="Solid Wood">Solid Wood</option>
 												<option value="Rigid Thermofoil">Rigid Thermofoil</option>
 												<option value="Bamboo">Bamboo</option>
@@ -96,34 +103,35 @@ class CabinetEdit extends Component{
 											<div className="col-md-4">
 												<FormGroup bsSize="large">
 													<ControlLabel>Height (in.)</ControlLabel>
-													<FormControl type="number" placeholder="0" id={`height${this.props.index}`} min="0" />
+													<FormControl type="number" step="0.1" placeholder="0" id={`height${this.props.index}`} min="0" />
 												</FormGroup>
 											</div>
 											<div className="col-md-4">
 												<FormGroup bsSize="large">
 													<ControlLabel>Width (in.)</ControlLabel>
-													<FormControl type="number" placeholder="0" id={`width${this.props.index}`} min="0" />
+													<FormControl type="number" step="0.1" placeholder="0" id={`width${this.props.index}`} min="0" />
 												</FormGroup>
 											</div>
 										</div>
 										<div className="modal-body row">
+
 											<div className="col-md-4">
 												<FormGroup bsSize="large">
 													<ControlLabel>Hinges</ControlLabel>
-													<FormControl type="number" placeholder="0" id={`width${this.props.index}`} min="0" />
+													<FormControl type="number" placeholder="0" id={`hinges${this.props.index}`} min="0" />
 												</FormGroup>
 											</div>
 											<div className="col-md-4">
 												<FormGroup bsSize="large">
 													<ControlLabel>Screws</ControlLabel>
-													<FormControl type="number" placeholder="0" id={`width${this.props.index}`} min="0" />
+													<FormControl type="number" placeholder="0" id={`screws${this.props.index}`} min="0" />
 												</FormGroup>
 											</div>
 											<div className="col-md-4">
-											<FormGroup bsSize="large">
-												<ControlLabel>Quantity</ControlLabel>
-												<FormControl type="number" placeholder="0" id={`quantity${this.props.index}`} min="1" />
-											</FormGroup>
+												<FormGroup bsSize="large">
+													<ControlLabel>Quantity</ControlLabel>
+													<FormControl type="number" placeholder="0" id={`quantity${this.props.index}`} min="1" />
+												</FormGroup>
 											</div>
 										</div>
 										<Button type="submit">Submit</Button>

@@ -86,19 +86,19 @@ class Window extends Component{
                   <div className="col-md-3">
                     <FormGroup bsSize="large">
                         <ControlLabel>Height (in.)</ControlLabel>
-                      <FormControl type="number" placeholder="0" id="window_height" min="0" />
+                      <FormControl type="number" step="0.1" placeholder="0" id="window_height" min="0" />
                     </FormGroup>
                   </div>
                   <div className="col-md-3">
                     <FormGroup bsSize="large">
                         <ControlLabel>Width (in.)</ControlLabel>
-                      <FormControl type="number" placeholder="0" id="window_width" min="0" />
+                      <FormControl type="number" step="0.1" placeholder="0" id="window_width" min="0" />
                     </FormGroup>
                   </div>
                   <div className="col-md-3">
                       <FormGroup bsSize="large">
                         <ControlLabel>Quantity</ControlLabel>
-                      <FormControl type="number" placeholder="1" id="window_quantity" min="1" />
+                        <FormControl type="number" placeholder="1" id="window_quantity" min="1" />
                     </FormGroup>
                   </div>
                 </div>

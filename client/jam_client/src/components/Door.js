@@ -111,24 +111,19 @@ class Door extends Component{
   								<div className="col-md-4">
 	  								<FormGroup bsSize="large">
 							      		<ControlLabel>Height (in.)</ControlLabel>
-	    								<FormControl type="number" placeholder="0" id="door_height" min="0" />
+	    								<FormControl type="number" step="0.1" placeholder="0" id="door_height" min="0" />
 	  								</FormGroup>
 	  							</div>
 	  							<div className="col-md-4">
 	  								<FormGroup bsSize="large">
 							      		<ControlLabel>Width (in.)</ControlLabel>
-	    								<FormControl type="number" placeholder="0" id="door_width" min="0" />
+	    								<FormControl type="number" step="0.1" placeholder="0" id="door_width" min="0" />
 	  								</FormGroup>
 	  							</div>
 	  						</div>
 						    
 						    <div className="modal-body row">
-						    	<div className="col-md-4">
-						      		<FormGroup bsSize="large">
-						      			<ControlLabel>Quantity</ControlLabel>
-    									<FormControl type="number" placeholder="1" id="door_quantity" min="1" onChange={this.handleQuantity} />
-  									</FormGroup>
-  								</div>
+
   								<div className="col-md-4">
 	  								<FormGroup bsSize="large">
 							      		<ControlLabel>Hinges</ControlLabel>
@@ -141,6 +136,12 @@ class Door extends Component{
 	    								<FormControl type="number" placeholder="8" id="door_screws" min="8" />
 	  								</FormGroup>
 	  							</div>
+	  					    	<div className="col-md-4">
+						      		<FormGroup bsSize="large">
+						      			<ControlLabel>Quantity</ControlLabel>
+    									<FormControl type="number" placeholder="1" id="door_quantity" min="1" onChange={this.handleQuantity} />
+  									</FormGroup>
+  								</div>
 								<Button type="submit" bsStyle="primary">Submit</Button>
   							</div>
 						</div>

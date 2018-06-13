@@ -95,13 +95,13 @@ class DoorEdit extends Component{
 			                  <div className="col-md-4">
 			                    <FormGroup bsSize="large">
 			                        <ControlLabel>Height (in.)</ControlLabel>
-			                      <FormControl type="number" placeholder="0" id={`height${this.props.index}`} min="0" />
+			                      <FormControl type="number" step="0.1" placeholder="0" id={`height${this.props.index}`} min="0" />
 			                    </FormGroup>
 			                  </div>
 			                  <div className="col-md-4">
 			                    <FormGroup bsSize="large">
 			                        <ControlLabel>Width (in.)</ControlLabel>
-			                      <FormControl type="number" placeholder="0" id={`width${this.props.index}`} min="0" />
+			                      <FormControl type="number" step="0.1" placeholder="0" id={`width${this.props.index}`} min="0" />
 			                    </FormGroup>
 			                  </div>
 			                </div>
@@ -109,13 +109,13 @@ class DoorEdit extends Component{
                       			<div className="col-md-4">
 				                    <FormGroup bsSize="large">
 				                        <ControlLabel>Hinges</ControlLabel>
-				                      <FormControl type="number" placeholder="0" id={`width${this.props.index}`} min="0" />
+				                      <FormControl type="number" placeholder="0" id={`hinges${this.props.index}`} min="0" />
 				                    </FormGroup>
 			                  	</div>
                       			<div className="col-md-4">
 				                    <FormGroup bsSize="large">
 				                        <ControlLabel>Screws</ControlLabel>
-				                      <FormControl type="number" placeholder="0" id={`width${this.props.index}`} min="0" />
+				                      <FormControl type="number" placeholder="0" id={`screws${this.props.index}`} min="0" />
 				                    </FormGroup>
 			                  	</div>
 			                
