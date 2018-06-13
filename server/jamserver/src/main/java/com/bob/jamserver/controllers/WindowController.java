@@ -27,10 +27,19 @@ public class WindowController {
     }
 
     @RequestMapping(value="/edit/window",method=RequestMethod.POST)
-    public String updateCabinet(@RequestBody Window window){
-        windowService.updateWindow(window);
+    public String updateWindow(@RequestBody Window window){
+        String type = window.getType();
+        double height = window.getHeight();
+        double width = window.getWidth();
+        int quantity = window.getQuantity();
+        String color = window.getColor();
+
+        windowService.updateWindow(window.getId(),type,height,width,quantity,color);
+
+
         return "windowUpdated";
     }
+
 
 
 }

@@ -21,15 +21,10 @@ public class DoorService {
 		return  doorRepo.findDoorsByJobID(jobId);
 	}
 
-	public void updateDoor(Door door){
-		 String type = door.getType();
-		 int hinges = door.getHinges();
-		 int screws = door.getScrews();
-		 double height = door.getHeight();
-		 double width = door.getWidth();
-		String color = door.getColor();
-		int quantity = door.getQuantity();
+	public void updateDoor(Long id, String type,int hinges,int screws,double height,double width,String color
+			,int quantity){
 
+		Door door = doorRepo.findDoorById(id);
 
 		door.setColor(color);
 		door.setHeight(height);

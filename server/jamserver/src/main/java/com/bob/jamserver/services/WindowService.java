@@ -20,19 +20,15 @@ public class WindowService {
         return  windowRepository.findWindowsByJobID(jobId);
     }
 
-    public void updateWindow(Window window){
+    public void updateWindow(Long id,String type,double height,double width,int quantity,String color){
+        Window windowToUpdate = windowRepository.findWindowById(id);
 
-        String type = window.getType();
-        double height = window.getHeight();
-         double width = window.getWidth();
-         int quantity = window.getQuantity();
-        String color = window.getColor();
+        windowToUpdate.setColor(color);
+        windowToUpdate.setHeight(height);
+        windowToUpdate.setQuantity(quantity);
+        windowToUpdate.setWidth(width);
+        windowToUpdate.setType(type);
 
-        window.setColor(color);
-        window.setHeight(height);
-        window.setQuantity(quantity);
-        window.setWidth(width);
-        window.setType(type);
-        windowRepository.save(window);
+        windowRepository.save(windowToUpdate);
     }
 }
