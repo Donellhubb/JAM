@@ -14,12 +14,29 @@ class CabinetEdit extends Component{
 		this.handleSubmit = this.handleSubmit.bind(this)
 	}
 
+
+	// componentWillReceiveNewProps(newProps){
+	// 	console.log(newProps)
+	// 	document.getElementById(`cabinetType${newProps.index}`).setAttribute("value", newProps.cabinet.type)
+	// 	document.getElementById(`cabinetColor${newProps.index}`).setAttribute("value", newProps.cabinet.color)
+	// 	document.getElementById(`cabinetHeight${newProps.index}`).setAttribute("value", newProps.cabinet.height)
+	// 	document.getElementById(`cabinetWidth${newProps.index}`).setAttribute("value", newProps.cabinet.width)
+	// 	document.getElementById(`cabinetQuantity${newProps.index}`).setAttribute("value", newProps.cabinet.quantity)
+	// 	document.getElementById(`cabinetHinges${newProps.index}`).setAttribute("value", newProps.cabinet.hinges)
+	// 	document.getElementById(`cabinetScrews${newProps.index}`).setAttribute("value", newProps.cabinet.screws)
+	// }
+
+
+
+
+
 	componentDidMount(){
 		// console.log(this.props.cabinet)
 		this.setState({
 			cabinet: this.props.cabinet,
 			job: this.props.cabinet.job,
 		})
+		console.log(this.props.index)
 		document.getElementById(`cabinetType${this.props.index}`).setAttribute("value", this.props.cabinet.type)
 		document.getElementById(`cabinetColor${this.props.index}`).setAttribute("value", this.props.cabinet.color)
 		document.getElementById(`cabinetHeight${this.props.index}`).setAttribute("value", this.props.cabinet.height)
@@ -32,6 +49,7 @@ class CabinetEdit extends Component{
 	handleSubmit(event){
 		event.preventDefault();
 		// console.log(this.props.index)
+		const customer = this.state.job.customer
 		const job = this.state.job;
 		const id = this.state.cabinet.id
 		const type = document.getElementById(`cabinetType${this.props.index}`).value;
@@ -41,7 +59,8 @@ class CabinetEdit extends Component{
 		const quantity = document.getElementById(`cabinetQuantity${this.props.index}`).value;
 		const hinges = document.getElementById(`cabinetHinges${this.props.index}`).value;
 		const screws = document.getElementById(`cabinetScrews${this.props.index}`).value;
-
+		// debugger
+		// console.log()
 		const updateCabinet = axios({
 			method: "POST",
 			url: url.url + "edit/cabinet",
@@ -57,9 +76,16 @@ class CabinetEdit extends Component{
 				screws
 			}
 		});
+		updateCabinet.then(data =>{
+			console.log(data)
+			this.props.updateCabinet(data);
+			// console.log(data)
+			// debugger
+		});
 	}
 
 	render(){
+		// console.log(this.props.index)
 		return(
 			<span>
 				<span data-toggle="modal" data-target={`#cabinetModal${this.props.index}`}>

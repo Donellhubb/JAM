@@ -32,7 +32,7 @@ public class CabinetController {
 	}
 
 	@RequestMapping(value="/edit/cabinet",method=RequestMethod.POST)
-	public String updateCabinet(@RequestBody Cabinet cabinet){
+	public HashMap<String, List<Cabinet>> updateCabinet(@RequestBody Cabinet cabinet){
 		String type = cabinet.getType();
 		int hinges = cabinet.getHinges();
 		int screws = cabinet.getScrews();
@@ -40,9 +40,13 @@ public class CabinetController {
 		double height = cabinet.getHeight();
 		double width = cabinet.getWidth();
 		String color = cabinet.getColor();
+
+		Long jodId =  cabinet.getJob().getId();
 		cabinetService.updateCabinet(cabinet.getId(),type,hinges,screws,quantity,height,width,color);
 
-		return "cabinetUpdated";
+		System.out.println("in cabinet updated "+cabinetService.getCabinetsForJob(jodId) );
+		cabinets.put("CabinetCreatedSuccessfully",cabinetService.getCabinetsForJob(jodId));
+		return cabinets;
 	}
 
 }

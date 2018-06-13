@@ -71,6 +71,7 @@ class Door extends Component{
 		})
 		
 		doorCreate.then(data =>{
+			// console.log(data)
 			this.props.updateDoor(data);
 			// console.log(data)
 		})

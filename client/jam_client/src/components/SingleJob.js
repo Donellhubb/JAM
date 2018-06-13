@@ -60,6 +60,7 @@ class SingleJob extends Component{
 	}
 
 	updateCabinet(cabinetArr){
+		// console.log(cabinetArr.data.CabinetCreatedSuccessfully)
 		this.setState({
 			cabinet: cabinetArr
 		})
@@ -101,7 +102,7 @@ class SingleJob extends Component{
 									<Cabinet job_id={this.state.job} updateCabinet={this.updateCabinet}/>
 								</Tab>
 								<Tab eventKey={4} title="Review/Edit">
-									<Review cabinet={this.state.cabinet} window={this.state.window} door={this.state.door}/>
+									<Review cabinet={this.state.cabinet} window={this.state.window} door={this.state.door} updateCabinet={this.updateCabinet}/>
 								</Tab>
 							</Tabs>
 						</div>

@@ -29,17 +29,19 @@ public class WindowController {
     }
 
     @RequestMapping(value="/edit/window",method=RequestMethod.POST)
-    public String updateWindow(@RequestBody Window window){
+    public HashMap<String, List<Window>> updateWindow(@RequestBody Window window){
         String type = window.getType();
         double height = window.getHeight();
         double width = window.getWidth();
         int quantity = window.getQuantity();
         String color = window.getColor();
 
+        Long jobId = window.getJob().getId();
         windowService.updateWindow(window.getId(),type,height,width,quantity,color);
+        List<Window> JobWindows = windowService.getWindowsForJob(jobId);
+        windows.put("WindowCreatedSuccessfully", JobWindows);
 
-
-        return "windowUpdated";
+        return windows;
     }
 
 

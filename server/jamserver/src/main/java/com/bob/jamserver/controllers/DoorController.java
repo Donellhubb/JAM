@@ -26,7 +26,7 @@ public class DoorController {
 	}
 
 	@RequestMapping(value="/edit/door",method=RequestMethod.POST)
-	public String updateDoor(@RequestBody Door door){
+	public HashMap<String, List<Door>> updateDoor(@RequestBody Door door){
 		String type = door.getType();
 		int hinges = door.getHinges();
 		int screws = door.getScrews();
@@ -36,8 +36,13 @@ public class DoorController {
 		int quantity = door.getQuantity();
 
 
-		doorService.updateDoor(door.getId(),type,hinges,screws,height,width,color,quantity);
+		Long jobId = door.getJob().getId();
 
-		return "doorUpdated";
+		doorService.updateDoor(door.getId(),type,hinges,screws,height,width,color,quantity);
+		List<Door> Jobdoors = doorService.getDoorsForJob(jobId);
+		doors.put("DoorCreatedSuccessfully",Jobdoors );
+		return doors;
 	}
+
+
 }

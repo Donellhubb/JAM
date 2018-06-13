@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface CabinetRepository extends CrudRepository<Cabinet, Long> {
 	List<Cabinet> findAll();
-	List<Cabinet> findCabinetsByJobId(Long Id);
+	List<Cabinet> findByJobIdOrderByIdDesc(Long Id);
 	Cabinet findCabinetById(Long id);
 
 }

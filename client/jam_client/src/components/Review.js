@@ -24,9 +24,13 @@ class Review extends Component{
  		 let windows
  		if(this.props.cabinet.data != undefined){
  			// console.log("Yoo")
+ 			console.log(this.props.cabinet.data.CabinetCreatedSuccessfully)
  			cabinets = this.props.cabinet.data.CabinetCreatedSuccessfully.map((data, index)=>{
 			// console.log(this.props.cabinet.data.CabinetCreatedSuccessfully) 		
  			// console.log(index);
+
+ 			console.log(data.color)
+
  				return(
 					<tr key = {index} className='cabinetList'>
 						<td>{data.type}</td>
@@ -37,7 +41,7 @@ class Review extends Component{
 						<td>{data.hinges}</td>
 						<td>{data.screws}</td>
 						<td>
-							<CabinetEdit index={index} cabinet={data} />
+							<CabinetEdit index={index} cabinet={data} updateCabinet={this.props.updateCabinet}/>
        					</td>	
 					</tr>
  				)
