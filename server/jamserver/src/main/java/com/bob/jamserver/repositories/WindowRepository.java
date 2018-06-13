@@ -11,7 +11,5 @@ import java.util.List;
 public interface WindowRepository extends CrudRepository<Window,Long> {
 	List<Window> findAll();
 	List<Window> findWindowsByJobID(Long id);
-	Window findWindowById(Long id);
-
 
 }

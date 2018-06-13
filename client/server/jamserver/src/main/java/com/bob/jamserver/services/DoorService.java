@@ -18,7 +18,7 @@ public class DoorService {
 	}
 
 	public List<Door> getDoorsForJob(Long jobId){
-		return  doorRepo.findDoorsByJobID(jobId);
+		return  doorRepo.findDoorsByJobId(jobId);
 	}
 
 	public void updateDoor(Door door){

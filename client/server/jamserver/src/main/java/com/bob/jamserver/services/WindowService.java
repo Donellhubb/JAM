@@ -17,7 +17,7 @@ public class WindowService {
     }
 
     public List<Window> getWindowsForJob(Long jobId){
-        return  windowRepository.findWindowsByJobID(jobId);
+        return  windowRepository.findWindowsByJobId(jobId);
     }
 
     public void updateWindow(Window window){

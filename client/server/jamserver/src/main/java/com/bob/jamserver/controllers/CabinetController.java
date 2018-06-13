@@ -26,6 +26,7 @@ public class CabinetController {
 
 	public HashMap<String, List<Cabinet>> createCabinet(@RequestBody Cabinet cabinet) {
 
+		cabinetService.createCabinet(cabinet);
 		cabinets.put("CabinetCreatedSuccessfully",cabinetService.getCabinetsForJob(cabinet.getJob().getId()));
 		return cabinets ;
 	}
