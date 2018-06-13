@@ -27,6 +27,7 @@ class WindowEdit extends Component{
 		event.preventDefault();
 		// console.log(this.props.index)
 		const job = this.state.job;
+		const id = this.state.window.id
 		const width = document.getElementById(`width${this.props.index}`).value;
 		const height = document.getElementById(`height${this.props.index}`).value;
 		const quantity = document.getElementById(`quantity${this.props.index}`).value;
@@ -37,6 +38,7 @@ class WindowEdit extends Component{
 			method: "POST",
 			url: url.url + "edit/window",
 			data:{
+				id,
 				job,
 				width,
 				height,
@@ -55,11 +57,11 @@ class WindowEdit extends Component{
 		// console.log(this.props.window)
 		return(
 			<span>
-				<span data-toggle="modal" data-target={`#myModal${this.props.index}`}>
+				<span data-toggle="modal" data-target={`#windowModal${this.props.index}`}>
 					<Glyphicon glyph="edit" /> 
 				</span>
 
-				<div className="modal fade" id={`myModal${this.props.index}`} role="dialog">
+				<div className="modal fade" id={`windowModal${this.props.index}`} role="dialog">
 				    <div className="modal-dialog modal-md">
 				      <div className="modal-content">
 				        <div className="modal-header">
@@ -119,13 +121,12 @@ class WindowEdit extends Component{
 				                      <FormControl type="number" placeholder="0" id={`quantity${this.props.index}`} min="1" />
 				                    </FormGroup>
 				                  </div>
-				                  <Button type="submit">Submit</Button>
 				                </div>
+				                <Button type="submit">Submit</Button>
 				              </div>
 				            </form>
 				        </div>
 				        <div className="modal-footer">
-				          <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
 				    </div>

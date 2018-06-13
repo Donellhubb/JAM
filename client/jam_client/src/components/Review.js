@@ -28,7 +28,7 @@ class Review extends Component{
 			// console.log(this.props.cabinet.data.CabinetCreatedSuccessfully) 		
  			// console.log(index);
  				return(
-					<tr>
+					<tr key = {index} className='cabinetList'>
 						<td>{data.type}</td>
 						<td>{data.color}</td>
 						<td>{data.height}</td>
@@ -36,6 +36,9 @@ class Review extends Component{
 						<td>{data.quantity}</td>
 						<td>{data.hinges}</td>
 						<td>{data.screws}</td>
+						<td>
+							<CabinetEdit index={index} cabinet={data} />
+       					</td>	
 					</tr>
  				)
  			});
@@ -45,18 +48,21 @@ class Review extends Component{
  		if(this.props.door.data != undefined){
  			// console.log("YO")
  			doors = this.props.door.data.DoorCreatedSuccessfully.map((data, index)=>{
- 			return(
- 				<tr>
-					<td>{data.type}</td>
-					<td>{data.color}</td>
-					<td>{data.height}</td>
-					<td>{data.width}</td>
-					<td>{data.quantity}</td>
-					<td>{data.hinges}</td>
-					<td>{data.screws}</td>
-				</tr>
- 			)
- 		})
+	 			return(
+	 				<tr key = {index} className='doorList'>
+						<td>{data.type}</td>
+						<td>{data.color}</td>
+						<td>{data.height}</td>
+						<td>{data.width}</td>
+						<td>{data.quantity}</td>
+						<td>{data.hinges}</td>
+						<td>{data.screws}</td>
+						<td>
+							<DoorEdit index={index} door={data} />
+	       				</td>	
+					</tr>
+	 			)
+ 			})
 
  		}
 
