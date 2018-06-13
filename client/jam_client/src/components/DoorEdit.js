@@ -19,6 +19,15 @@ class DoorEdit extends Component{
 			door: this.props.door,
 			job: this.props.door.job,
     })
+
+		document.getElementById(`doorType${this.props.index}`).setAttribute("value", this.props.door.type)
+		document.getElementById(`doorColor${this.props.index}`).setAttribute("value", this.props.door.color)
+		document.getElementById(`doorHeight${this.props.index}`).setAttribute("value", this.props.door.height)
+		document.getElementById(`doorWidth${this.props.index}`).setAttribute("value", this.props.door.width)
+		document.getElementById(`doorQuantity${this.props.index}`).setAttribute("value", this.props.door.quantity)
+		document.getElementById(`doorHinges${this.props.index}`).setAttribute("value", this.props.door.hinges)
+		document.getElementById(`doorScrews${this.props.index}`).setAttribute("value", this.props.door.screws)
+		debugger
   }
 
   handleSubmit(event){
@@ -26,13 +35,13 @@ class DoorEdit extends Component{
 		// console.log(this.props.index)
 		const job = this.state.job;
 		const id = this.state.door.id
-		const type = document.getElementById(`type${this.props.index}`).value;
-		const color = document.getElementById(`color${this.props.index}`).value;
-		const height = document.getElementById(`height${this.props.index}`).value;
-		const width = document.getElementById(`width${this.props.index}`).value;
-	    const quantity = document.getElementById(`quantity${this.props.index}`).value;
-	    const hinges = document.getElementById(`hinges${this.props.index}`).value;
-	    const screws = document.getElementById(`screws${this.props.index}`).value;
+		const type = document.getElementById(`doorType${this.props.index}`).value;
+		const color = document.getElementById(`doorColor${this.props.index}`).value;
+		const height = document.getElementById(`doorHeight${this.props.index}`).value;
+		const width = document.getElementById(`doorWidth${this.props.index}`).value;
+	    const quantity = document.getElementById(`doorQuantity${this.props.index}`).value;
+	    const hinges = document.getElementById(`doorHinges${this.props.index}`).value;
+	    const screws = document.getElementById(`doorScrews${this.props.index}`).value;
     
     const updateDoor = axios({
 			method: "POST",
@@ -72,8 +81,8 @@ class DoorEdit extends Component{
 			              <div className="col-md-12">
 			              <FormGroup controlId="formControlsSelect">
 			                  <ControlLabel>Door Type</ControlLabel>
-			                    <FormControl componentClass="select" id={`type${this.props.index}`} bsSize="large">
-			                      	<option value="" selected disabled>{this.state.door.type}</option>
+			                    <FormControl componentClass="select" id={`doorType${this.props.index}`} bsSize="large">
+			                      	<option value={`${this.state.door.type}`} selected disabled>{this.state.door.type}</option>
 			                      	<option value="Fiber Glass">Fiber Glass</option>
 			                      	<option value="Wood">Wood</option>
                           			<option value="Steel">Steel</option>
@@ -84,7 +93,7 @@ class DoorEdit extends Component{
 								<div className="col-md-4">
 									<FormGroup bsSize="large">
 									    <ControlLabel>Color</ControlLabel>
-									  	<FormControl componentClass="select" placeholder={`${this.state.door.color}`} id={`color${this.props.index}`}>
+									  	<FormControl componentClass="select" placeholder={`${this.state.door.color}`} id={`doorColor${this.props.index}`}>
 									    	<option value="Black">Black</option>
 									    	<option value="White">White</option>
 									    	<option value="Blue">Blue</option>
@@ -95,13 +104,13 @@ class DoorEdit extends Component{
 			                  <div className="col-md-4">
 			                    <FormGroup bsSize="large">
 			                        <ControlLabel>Height (in.)</ControlLabel>
-			                      <FormControl type="number" step="0.1" placeholder="0" id={`height${this.props.index}`} min="0" />
+			                      <FormControl type="number" step="0.1" placeholder="0" id={`doorHeight${this.props.index}`} min="0" />
 			                    </FormGroup>
 			                  </div>
 			                  <div className="col-md-4">
 			                    <FormGroup bsSize="large">
 			                        <ControlLabel>Width (in.)</ControlLabel>
-			                      <FormControl type="number" step="0.1" placeholder="0" id={`width${this.props.index}`} min="0" />
+			                      <FormControl type="number" step="0.1" placeholder="0" id={`doorWidth${this.props.index}`} min="0" />
 			                    </FormGroup>
 			                  </div>
 			                </div>
@@ -109,20 +118,20 @@ class DoorEdit extends Component{
                       			<div className="col-md-4">
 				                    <FormGroup bsSize="large">
 				                        <ControlLabel>Hinges</ControlLabel>
-				                      <FormControl type="number" placeholder="0" id={`hinges${this.props.index}`} min="0" />
+				                      <FormControl type="number" placeholder="0" id={`doorHinges${this.props.index}`} min="0" />
 				                    </FormGroup>
 			                  	</div>
                       			<div className="col-md-4">
 				                    <FormGroup bsSize="large">
 				                        <ControlLabel>Screws</ControlLabel>
-				                      <FormControl type="number" placeholder="0" id={`screws${this.props.index}`} min="0" />
+				                      <FormControl type="number" placeholder="0" id={`doorScrews${this.props.index}`} min="0" />
 				                    </FormGroup>
 			                  	</div>
 			                
 			                	<div className="col-md-4">
 			                    	<FormGroup bsSize="large">
 			                        	<ControlLabel>Quantity</ControlLabel>
-			                      		<FormControl type="number" placeholder="0" id={`quantity${this.props.index}`} min="1" />
+			                      		<FormControl type="number" placeholder="0" id={`doorQuantity${this.props.index}`} min="1" />
 			                    	</FormGroup>
 			                  	</div>
 			                </div>

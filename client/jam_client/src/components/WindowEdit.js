@@ -18,9 +18,11 @@ class WindowEdit extends Component{
 			window: this.props.window,
 			job: this.props.window.job,
 		})
-		// console.log(this.state.window)
-    	// document.getElementById('window_height').setAttribute("value", this.state.window.height);
-    	// document.getElementById('window_width').setAttribute("value", this.state.width);
+		document.getElementById(`windowType${this.props.index}`).setAttribute("value", this.props.window.type)
+		document.getElementById(`windowColor${this.props.index}`).setAttribute("value", this.props.window.color)
+		document.getElementById(`windowHeight${this.props.index}`).setAttribute("value", this.props.window.height)
+		document.getElementById(`windowWidth${this.props.index}`).setAttribute("value", this.props.window.width)
+		document.getElementById(`windowQuantity${this.props.index}`).setAttribute("value", this.props.window.quantity)
 	}
 
 	handleSubmit(event){
@@ -28,11 +30,11 @@ class WindowEdit extends Component{
 		// console.log(this.props.index)
 		const job = this.state.job;
 		const id = this.state.window.id
-		const width = document.getElementById(`width${this.props.index}`).value;
-		const height = document.getElementById(`height${this.props.index}`).value;
-		const quantity = document.getElementById(`quantity${this.props.index}`).value;
-		const color = document.getElementById(`color${this.props.index}`).value;
-		const type = document.getElementById(`type${this.props.index}`).value;
+		const width = document.getElementById(`windowWidth${this.props.index}`).value;
+		const height = document.getElementById(`windowHeight${this.props.index}`).value;
+		const quantity = document.getElementById(`windowQuantity${this.props.index}`).value;
+		const color = document.getElementById(`windowColor${this.props.index}`).value;
+		const type = document.getElementById(`windowType${this.props.index}`).value;
 		
 		const updateWindow = axios({
 			method: "POST",
@@ -72,10 +74,10 @@ class WindowEdit extends Component{
 
 				            <form onSubmit={this.handleSubmit}>
 				                <div className="col-md-12">
-				              <FormGroup controlId="formControlsSelect">
+				              	<FormGroup controlId="formControlsSelect">
 				                  <ControlLabel>Window Type</ControlLabel>
-				                    <FormControl componentClass="select" id={`type${this.props.index}`} bsSize="large">
-				                      <option value="" selected disabled>{this.state.window.type}</option>
+				                    <FormControl componentClass="select" id={`windowType${this.props.index}`} bsSize="large">
+				                      <option value={`${this.state.window.type}`} selected disabled>{this.state.window.type}</option>
 				                      <option value="Single Hung Windows">Single Hung Windows</option>
 				                      <option value="Double Hung Windows">Double Hung Windows</option>
 				                      <option value="Casement Windows">Casement Windows</option>
@@ -92,7 +94,7 @@ class WindowEdit extends Component{
 				                  <div className="col-md-3">
 				                      <FormGroup bsSize="large">
 				                        <ControlLabel>Color</ControlLabel>
-				                      <FormControl componentClass="select" placeholder={`${this.state.window.color}`} id={`color${this.props.index}`}>
+				                      <FormControl componentClass="select" placeholder={`${this.state.window.color}`} id={`windowColor${this.props.index}`}>
 				                        <option value="Black">Black</option>
 				                        <option value="White">White</option>
 				                        <option value="Blue">Blue</option>
@@ -103,19 +105,19 @@ class WindowEdit extends Component{
 				                  <div className="col-md-3">
 				                    <FormGroup bsSize="large">
 				                        <ControlLabel>Height (in.)</ControlLabel>
-				                      <FormControl type="number" step="0.1" placeholder="0" id={`height${this.props.index}`} min="0" />
+				                      <FormControl type="number" step="0.1" placeholder="0" id={`windowHeight${this.props.index}`} min="0" />
 				                    </FormGroup>
 				                  </div>
 				                  <div className="col-md-3">
 				                    <FormGroup bsSize="large">
 				                        <ControlLabel>Width (in.)</ControlLabel>
-				                      <FormControl type="number" step="0.1" placeholder="0" id={`width${this.props.index}`} min="0" />
+				                      <FormControl type="number" step="0.1" placeholder="0" id={`windowWidth${this.props.index}`} min="0" />
 				                    </FormGroup>
 				                  </div>
 				                  <div className="col-md-3">
 				                      <FormGroup bsSize="large">
 				                        <ControlLabel>Quantity</ControlLabel>
-				                      <FormControl type="number" placeholder="0" id={`quantity${this.props.index}`} min="1" />
+				                      <FormControl type="number" placeholder="0" id={`windowQuantity${this.props.index}`} min="1" />
 				                    </FormGroup>
 				                  </div>
 				                </div>
