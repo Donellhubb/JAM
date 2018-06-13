@@ -19,4 +19,16 @@ public class WindowService {
     public List<Window> getWindowsForJob(Long jobId){
         return  windowRepository.findWindowsByJobId(jobId);
     }
+
+    public void updateWindow(Long id,String type,double height,double width,int quantity,String color){
+        Window windowToUpdate = windowRepository.findWindowById(id);
+
+        windowToUpdate.setColor(color);
+        windowToUpdate.setHeight(height);
+        windowToUpdate.setQuantity(quantity);
+        windowToUpdate.setWidth(width);
+        windowToUpdate.setType(type);
+
+        windowRepository.save(windowToUpdate);
+    }
 }

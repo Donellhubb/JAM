@@ -24,4 +24,20 @@ public class CabinetService {
 
 	}
 
+	public void updateCabinet(Long id,String type,int hinges,int screws,int quantity,double height
+			,double width,String color){
+
+		Cabinet cabinet = cabinetRepository.findCabinetById(id);
+		cabinet.setColor(color);
+		cabinet.setHeight(height);
+		cabinet.setType(type);
+		cabinet.setHinges(hinges);
+		cabinet.setQuantity(quantity);
+		cabinet.setWidth(width);
+		cabinet.setScrews(screws);
+		cabinetRepository.save(cabinet);
+
+	}
+
+
 }

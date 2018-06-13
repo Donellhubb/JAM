@@ -31,4 +31,18 @@ public class CabinetController {
 		return cabinets ;
 	}
 
+	@RequestMapping(value="/edit/cabinet",method=RequestMethod.POST)
+	public String updateCabinet(@RequestBody Cabinet cabinet){
+		String type = cabinet.getType();
+		int hinges = cabinet.getHinges();
+		int screws = cabinet.getScrews();
+		int quantity = cabinet.getQuantity();
+		double height = cabinet.getHeight();
+		double width = cabinet.getWidth();
+		String color = cabinet.getColor();
+		cabinetService.updateCabinet(cabinet.getId(),type,hinges,screws,quantity,height,width,color);
+
+		return "cabinetUpdated";
+	}
+
 }
