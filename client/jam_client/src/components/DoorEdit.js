@@ -27,7 +27,6 @@ class DoorEdit extends Component{
 		document.getElementById(`doorQuantity${this.props.index}`).setAttribute("value", this.props.door.quantity)
 		document.getElementById(`doorHinges${this.props.index}`).setAttribute("value", this.props.door.hinges)
 		document.getElementById(`doorScrews${this.props.index}`).setAttribute("value", this.props.door.screws)
-		debugger
   }
 
   handleSubmit(event){
