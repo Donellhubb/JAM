@@ -42,22 +42,29 @@ class DoorEdit extends Component{
 	    const hinges = document.getElementById(`doorHinges${this.props.index}`).value;
 	    const screws = document.getElementById(`doorScrews${this.props.index}`).value;
     
-    const updateDoor = axios({
+		const updateDoor = axios({
 			method: "POST",
 			url: url.url + "edit/door",
 			data:{
 				id,
 				job,
-		        type,
-		        color,
-		        height,
-		        width,
-		        quantity,
-		        hinges,
-		        screws
-					}
-				});
-		  	}
+				type,
+				color,
+				height,
+				width,
+				quantity,
+				hinges,
+				screws
+			}
+		});
+		updateDoor.then(data =>{
+			console.log(data)
+			this.props.updateDoor(data);
+			document.getElementById(`doorModal` + this.props.index).click()
+			// console.log(data)
+			// debugger
+		});
+	}
 
   render(){
     return(

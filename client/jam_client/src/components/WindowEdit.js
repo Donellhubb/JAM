@@ -42,12 +42,19 @@ class WindowEdit extends Component{
 			data:{
 				id,
 				job,
-				width,
-				height,
-				quantity,
+				type,
 				color,
-				type
+				height,
+				width,
+				quantity,
 			}
+		});
+		updateWindow.then(data =>{
+			// console.log(data)
+			this.props.updateWindow(data);
+			document.getElementById(`windowModal` + this.props.index).click()
+			// console.log(data)
+			// debugger
 		});
 	}
 

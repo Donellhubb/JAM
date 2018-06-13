@@ -77,8 +77,9 @@ class CabinetEdit extends Component{
 			}
 		});
 		updateCabinet.then(data =>{
-			console.log(data)
+			// console.log(data)
 			this.props.updateCabinet(data);
+			document.getElementById(`cabinetModal` + this.props.index).click()
 			// console.log(data)
 			// debugger
 		});

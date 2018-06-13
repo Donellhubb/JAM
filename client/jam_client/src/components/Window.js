@@ -30,6 +30,7 @@ class Window extends Component{
     const quantity = document.getElementById('window_quantity').value
     const color = document.getElementById('window_color').value
     const job = this.props.job_id
+    
     const windowCreate = axios({
       method: 'POST',
       url: url.url + "window/create",

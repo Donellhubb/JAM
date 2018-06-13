@@ -47,11 +47,10 @@ class SingleJob extends Component{
 		this.setState({
 			door: doorArr
 		})
-		// console.log("YOOOOOOO we hurrr: ")
-		// console.log(this.state.door)
 	}
 
 	updateWindow(windowArr){
+		console.log("YPPPPPPPPPPPPPPPPPPP")
 		this.setState({
 			window: windowArr
 		})
@@ -102,7 +101,7 @@ class SingleJob extends Component{
 									<Cabinet job_id={this.state.job} updateCabinet={this.updateCabinet}/>
 								</Tab>
 								<Tab eventKey={4} title="Review/Edit">
-									<Review cabinet={this.state.cabinet} window={this.state.window} door={this.state.door} updateCabinet={this.updateCabinet}/>
+									<Review cabinet={this.state.cabinet} window={this.state.window} door={this.state.door} updateCabinet={this.updateCabinet} updateWindow={this.updateWindow} updateDoor={this.updateDoor} />
 								</Tab>
 							</Tabs>
 						</div>

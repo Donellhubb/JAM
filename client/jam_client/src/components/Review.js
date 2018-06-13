@@ -62,7 +62,7 @@ class Review extends Component{
 						<td>{data.hinges}</td>
 						<td>{data.screws}</td>
 						<td>
-							<DoorEdit index={index} door={data} />
+							<DoorEdit index={index} door={data} updateDoor={this.props.updateDoor} />
 	       				</td>	
 					</tr>
 	 			)
@@ -83,7 +83,7 @@ class Review extends Component{
 						<td>{data.width}</td>
 						<td>{data.quantity}</td>
 						<td>
-							<WindowEdit index={index} window={data} />
+							<WindowEdit index={index} window={data} updateWindow={this.props.updateWindow} />
        					</td>		
 					</tr>
  				)
