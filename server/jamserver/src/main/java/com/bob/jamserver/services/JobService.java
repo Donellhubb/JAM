@@ -17,6 +17,10 @@ public class JobService {
 	public void createJob(Job job){
 		jobRepo.save(job);
 	}
+
+	public List<Job> allJobs(){
+		return jobRepo.findAll();
+	}
 	
 	public List<Job> findUserJobs(Long userId){
 		return jobRepo.findJobsByUserId(userId);
