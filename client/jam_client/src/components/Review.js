@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import url from '../url';
+import {Table} from 'react-bootstrap';
+import WindowEdit from './WindowEdit';
+import DoorEdit from './DoorEdit';
+import CabinetEdit from './CabinetEdit';
+
 
 class Review extends Component{
 	constructor(){
@@ -8,6 +13,7 @@ class Review extends Component{
 		this.state={
 		}
 		this.getProducts = this.getProducts.bind(this);
+		// this.handleWindowEdit = this.handleWindowEdit.bind(this);
  	}
 
 
@@ -19,44 +25,159 @@ class Review extends Component{
  		if(this.props.cabinet.data != undefined){
  			// console.log("Yoo")
  			cabinets = this.props.cabinet.data.CabinetCreatedSuccessfully.map((data, index)=>{
- 			// console.log(data.id);
+			// console.log(this.props.cabinet.data.CabinetCreatedSuccessfully) 		
+ 			// console.log(index);
  				return(
- 					<h2> Type: {data.type}</h2>
+					<tr key = {index} className='cabinetList'>
+						<td>{data.type}</td>
+						<td>{data.color}</td>
+						<td>{data.height}</td>
+						<td>{data.width}</td>
+						<td>{data.quantity}</td>
+						<td>{data.hinges}</td>
+						<td>{data.screws}</td>
+						<td>
+							<CabinetEdit index={index} cabinet={data} />
+       					</td>	
+					</tr>
  				)
- 			})
+ 			});
  		}
+
 
  		if(this.props.door.data != undefined){
  			// console.log("YO")
  			doors = this.props.door.data.DoorCreatedSuccessfully.map((data, index)=>{
- 			return(
- 				<h2>Type: {data.id}</h2>
- 			)
- 		})
+	 			return(
+	 				<tr key = {index} className='doorList'>
+						<td>{data.type}</td>
+						<td>{data.color}</td>
+						<td>{data.height}</td>
+						<td>{data.width}</td>
+						<td>{data.quantity}</td>
+						<td>{data.hinges}</td>
+						<td>{data.screws}</td>
+						<td>
+							<DoorEdit index={index} door={data} />
+	       				</td>	
+					</tr>
+	 			)
+ 			})
 
  		}
 
  		if(this.props.window.data != undefined){
+ 			// this.handleWindowEdit()
  			windows = this.props.window.data.WindowCreatedSuccessfully.map((data, index)=>{
+
+ 				console.log(index)
  				return(
- 					<h2>Type: {data.type}</h2>
- 					)
+	 				<tr key = {index} className='windowList'>
+						<td>{data.type}</td>
+						<td>{data.color}</td>
+						<td>{data.height}</td>
+						<td>{data.width}</td>
+						<td>{data.quantity}</td>
+						<td>
+							<WindowEdit index={index} window={data} />
+       					</td>		
+					</tr>
+ 				)
  			})
  		}
- 		
-
-
  		// console.log(cabinets)
  		return(
  			<div>
- 				<span> {cabinets}</span>
-	 			<span> {doors} </span>
-	 			<span> {windows} </span>
+ 				{cabinets != undefined
+ 					?
+ 					<div>
+	 					<h3> Cabinets </h3>
+	 					<Table>
+	 						<thead>
+	 							{this.cabinetHeaders()}
+	 						</thead>
+	 						<tbody>
+	 							{cabinets}
+	 						</tbody>
+	 					</Table>
+	 				</div>
+	 				:
+	 				<span></span>
+	 			}
+	 			{doors != undefined
+ 					?
+ 					<div>
+	 					<h3> Doors </h3>
+	 					<Table>
+	 						<thead>
+	 							{this.cabinetHeaders()}
+	 						</thead>
+	 						<tbody>
+	 							{doors}
+	 						</tbody>
+	 					</Table>
+	 				</div>
+	 				:
+	 				<span></span>
+	 			}
+	 			{windows != undefined
+ 					?
+ 					<div>
+	 					<h3> Windows </h3>
+	 					<Table>
+	 						<thead>
+	 							{this.windowHeaders()}
+	 						</thead>
+	 						<tbody>
+	 							{windows}
+	 						</tbody>
+	 					</Table>
+	 				</div>
+	 				:
+	 				<span></span>
+	 			}
  			</div>
  		)
-
-
   	}
+
+  // 	handleWindowEdit(){
+  // 		let edit = document.getElementsByClassName('edit-btn');
+  // 		// console.log("YOYOYO")
+  // 		for(let i=0; i < edit.length; i++){
+		// 	edit[i].addEventListener('click', function(){
+
+		// 	})
+		// }
+  // 		// event.preventDefault();
+  // 		// document.getElementsBy('')
+
+  // 	}
+	
+	windowHeaders(){
+		return(
+		<tr>
+			<th className='text-center' width='200'>Type</th>
+			<th className='text-center' width='200'>Color</th>
+			<th className='text-center' width='200'>Height</th>
+			<th className='text-center' width='200'>Width</th>
+			<th className='text-center' width='200'>Quantity</th>
+		</tr>
+		)
+	}
+
+	cabinetHeaders(){
+		return(
+		<tr>
+			<th className='text-center' width='200'>Type</th>
+			<th className='text-center' width='200'>Color</th>
+			<th className='text-center' width='200'>Height</th>
+			<th className='text-center' width='200'>Width</th>
+			<th className='text-center' width='200'>Quantity</th>
+			<th className='text-center' width='200'>Hinges</th>
+			<th className='text-center' width='200'>Screws</th>
+		</tr>
+		)
+	}
 
 	render(){
 
