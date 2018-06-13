@@ -10,7 +10,7 @@
 }
 
 li.active{
-	/*border-bottom: 10px solid red;*/
+	border-bottom: 10px solid red;
 	text-decoration: underline;
 	font-weight: bold
 }
@@ -72,8 +72,13 @@ label{
  p{
 	 color: aliceblue;
  }
-.jobs-list{
-	
+
+.jumbotron{
+	background-color:#00b1b1;
+	color: white;
 }
 
+.newUser{
+	margin-top: 30px;
+}
 

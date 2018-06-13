@@ -65,7 +65,9 @@ class Login extends Component{
 						
 							<button type="submit" className="btn btn-primary login-space">Submit</button><br/>
 							{/* <p className = "login-space">If you are a new user please register</p> */}
-							<NavLink to="/register">New User</NavLink><br/>
+							<div className="newUser">
+								<NavLink to="/register">New User</NavLink><br/>
+							</div>
 					</div>
 				</form>	
 	 </div>
