@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface WindowRepository extends CrudRepository<Window,Long> {
 	List<Window> findAll();
-	List<Window> findWindowsByJobID(Long id);
+	List<Window> findWindowsByJobId(Long id);
 	Window findWindowById(Long id);
 
 
