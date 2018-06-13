@@ -1,14 +1,12 @@
 package com.bob.jamserver.services;
 
-import java.security.SecureRandom;
-import java.util.UUID;
-
+import com.bob.jamserver.model.User;
+import com.bob.jamserver.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.bob.jamserver.model.User;
-import com.bob.jamserver.repositories.UserRepository;
+import java.security.SecureRandom;
 
 
 @Service
@@ -55,8 +53,7 @@ public class UserService {
 	    for(int i = 0; i < bytes.length;i++) {
 	    	st+=bytes[i];
 	    }
-//	    System.out.println("in token class "+st);
-//	String uuid = UUID.randomUUID().toString();
+
     return st;
 	}
 	

@@ -30,4 +30,10 @@ public class CabinetController {
 		return cabinets ;
 	}
 
+	@RequestMapping(value="/edit/cabinet",method=RequestMethod.POST)
+	public String updateCabinet(@RequestBody Cabinet cabinet){
+		cabinetService.updateCabinet(cabinet);
+		return "cabinetUpdated";
+	}
+
 }

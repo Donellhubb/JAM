@@ -25,4 +25,11 @@ public class DoorController {
 		return doors;
 	}
 
+	@RequestMapping(value="/edit/door",method=RequestMethod.POST)
+	public String updateCabinet(@RequestBody Door door){
+		doorService.updateDoor(door);
+		return "doorUpdated";
+	}
+
+
 }
