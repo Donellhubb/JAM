@@ -3,6 +3,8 @@ import axios from 'axios';
 import url from '../url';
 import {Table} from 'react-bootstrap';
 import WindowEdit from './WindowEdit';
+import DoorEdit from './DoorEdit';
+import CabinetEdit from './CabinetEdit';
 
 
 class Review extends Component{
