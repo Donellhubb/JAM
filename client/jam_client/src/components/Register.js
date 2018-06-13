@@ -75,7 +75,7 @@ class Register extends Component{
           <label htmlFor="pwd">Password:</label>
           <input type="password" className="form-control" id="pwd" placeholder="Password" />
         </div>
-        <button type="submit" className="btn btn-default">Register</button>
+        <button type="submit" className="btn btn-primary">Register</button>
       </form>
     </div>
     ) 
