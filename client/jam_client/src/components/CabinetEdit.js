@@ -20,7 +20,13 @@ class CabinetEdit extends Component{
 			cabinet: this.props.cabinet,
 			job: this.props.cabinet.job,
 		})
-		// debugger
+		document.getElementById(`cabinetType${this.props.index}`).setAttribute("value", this.props.cabinet.type)
+		document.getElementById(`cabinetColor${this.props.index}`).setAttribute("value", this.props.cabinet.color)
+		document.getElementById(`cabinetHeight${this.props.index}`).setAttribute("value", this.props.cabinet.height)
+		document.getElementById(`cabinetWidth${this.props.index}`).setAttribute("value", this.props.cabinet.width)
+		document.getElementById(`cabinetQuantity${this.props.index}`).setAttribute("value", this.props.cabinet.quantity)
+		document.getElementById(`cabinetHinges${this.props.index}`).setAttribute("value", this.props.cabinet.hinges)
+		document.getElementById(`cabinetScrews${this.props.index}`).setAttribute("value", this.props.cabinet.screws)
 	}
 
 	handleSubmit(event){
@@ -28,13 +34,13 @@ class CabinetEdit extends Component{
 		// console.log(this.props.index)
 		const job = this.state.job;
 		const id = this.state.cabinet.id
-		const type = document.getElementById(`type${this.props.index}`).value;
-		const color = document.getElementById(`color${this.props.index}`).value;
-		const height = document.getElementById(`height${this.props.index}`).value;
-		const width = document.getElementById(`width${this.props.index}`).value;
-		const quantity = document.getElementById(`quantity${this.props.index}`).value;
-		const hinges = document.getElementById(`hinges${this.props.index}`).value;
-		const screws = document.getElementById(`screws${this.props.index}`).value;
+		const type = document.getElementById(`cabinetType${this.props.index}`).value;
+		const color = document.getElementById(`cabinetColor${this.props.index}`).value;
+		const height = document.getElementById(`cabinetHeight${this.props.index}`).value;
+		const width = document.getElementById(`cabinetWidth${this.props.index}`).value;
+		const quantity = document.getElementById(`cabinetQuantity${this.props.index}`).value;
+		const hinges = document.getElementById(`cabinetHinges${this.props.index}`).value;
+		const screws = document.getElementById(`cabinetScrews${this.props.index}`).value;
 
 		const updateCabinet = axios({
 			method: "POST",
@@ -73,8 +79,8 @@ class CabinetEdit extends Component{
 									<div className="col-md-12">
 										<FormGroup controlId="formControlsSelect">
 											<ControlLabel>Cabinet Type</ControlLabel>
-											<FormControl componentClass="select" id={`type${this.props.index}`} bsSize="large">
-												<option value="" selected disabled>{this.state.cabinet.type}</option>
+											<FormControl componentClass="select" id={`cabinetType${this.props.index}`} bsSize="large">
+												<option value={`${this.state.cabinet.type}`} selected disabled>{this.state.cabinet.type}</option>
 												<option value="Solid Wood">Solid Wood</option>
 												<option value="Rigid Thermofoil">Rigid Thermofoil</option>
 												<option value="Bamboo">Bamboo</option>
@@ -85,7 +91,7 @@ class CabinetEdit extends Component{
 											<div className="col-md-4">
 												<FormGroup bsSize="large">
 													<ControlLabel>Color</ControlLabel>
-													<FormControl componentClass="select" placeholder={`${this.state.cabinet.color}`} id={`color${this.props.index}`}>
+													<FormControl componentClass="select" placeholder={`${this.state.cabinet.color}`} id={`cabinetColor${this.props.index}`}>
 														<option value="Black">Black</option>
 														<option value="White">White</option>
 														<option value="Blue">Blue</option>
@@ -96,34 +102,35 @@ class CabinetEdit extends Component{
 											<div className="col-md-4">
 												<FormGroup bsSize="large">
 													<ControlLabel>Height (in.)</ControlLabel>
-													<FormControl type="number" placeholder="0" id={`height${this.props.index}`} min="0" />
+													<FormControl type="number" step="0.1" placeholder="0" id={`cabinetHeight${this.props.index}`} min="0" />
 												</FormGroup>
 											</div>
 											<div className="col-md-4">
 												<FormGroup bsSize="large">
 													<ControlLabel>Width (in.)</ControlLabel>
-													<FormControl type="number" placeholder="0" id={`width${this.props.index}`} min="0" />
+													<FormControl type="number" step="0.1" placeholder="0" id={`cabinetWidth${this.props.index}`} min="0" />
 												</FormGroup>
 											</div>
 										</div>
 										<div className="modal-body row">
+
 											<div className="col-md-4">
 												<FormGroup bsSize="large">
 													<ControlLabel>Hinges</ControlLabel>
-													<FormControl type="number" placeholder="0" id={`width${this.props.index}`} min="0" />
+													<FormControl type="number" placeholder="0" id={`cabinetHinges${this.props.index}`} min="0" />
 												</FormGroup>
 											</div>
 											<div className="col-md-4">
 												<FormGroup bsSize="large">
 													<ControlLabel>Screws</ControlLabel>
-													<FormControl type="number" placeholder="0" id={`width${this.props.index}`} min="0" />
+													<FormControl type="number" placeholder="0" id={`cabinetScrews${this.props.index}`} min="0" />
 												</FormGroup>
 											</div>
 											<div className="col-md-4">
-											<FormGroup bsSize="large">
-												<ControlLabel>Quantity</ControlLabel>
-												<FormControl type="number" placeholder="0" id={`quantity${this.props.index}`} min="1" />
-											</FormGroup>
+												<FormGroup bsSize="large">
+													<ControlLabel>Quantity</ControlLabel>
+													<FormControl type="number" placeholder="0" id={`cabinetQuantity${this.props.index}`} min="1" />
+												</FormGroup>
 											</div>
 										</div>
 										<Button type="submit">Submit</Button>

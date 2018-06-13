@@ -70,7 +70,7 @@ class Review extends Component{
  			// this.handleWindowEdit()
  			windows = this.props.window.data.WindowCreatedSuccessfully.map((data, index)=>{
 
- 				console.log(index)
+ 				// console.log(index)
  				return(
 	 				<tr key = {index} className='windowList'>
 						<td>{data.type}</td>
