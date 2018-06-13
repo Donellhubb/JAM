@@ -13,12 +13,14 @@ import java.util.List;
 public class WindowController {
 
     @Autowired
+
     WindowService  windowService;
 
     HashMap<String, List<Window>> windows = new HashMap<String, List<Window>>();
 
     @RequestMapping(value = "/window/create", method = RequestMethod.POST)
     public HashMap<String, List<Window>> createDoor(@RequestBody Window window) {
+
 
         windowService.createWindow(window);
         windows.put("WindowCreatedSuccessfully",windowService.getWindowsForJob(window.getJob().getId()));
@@ -43,3 +45,4 @@ public class WindowController {
 
 
 }
+
