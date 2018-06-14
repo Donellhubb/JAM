@@ -1,14 +1,25 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import Logout from './Logout';
 
 class NavBar extends Component{
+
+
+
 	render(){
+
+		const loggedIn= localStorage.token;
 		return(
 			<div>
 				<nav className="navbar navbar-inverse myNavBar">
 					<div className="container-fluid">
 						<div className="navbar-header">
-							<Link to="/" className="navbar-brand">JAM</Link>
+							{loggedIn == undefined
+								?
+								<Link to="/" className="navbar-brand">JAM</Link>
+								:
+								<Logout />
+							}
 						</div>
 					</div>
 				</nav>			

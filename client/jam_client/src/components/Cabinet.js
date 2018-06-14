@@ -130,7 +130,7 @@ class Cabinet extends Component{
                         <FormControl type="number" placeholder="1" id="cabinet_quantity" min="1" onClick={this.handleQuantity} />
                       </FormGroup>
                   </div>
-                  <Button type="submit">Submit</Button>
+                  <Button type="submit" bsStyle="primary">Submit</Button>
                 </div>
               </div>
             </form>

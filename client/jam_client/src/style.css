@@ -46,7 +46,12 @@ label.active{
 	}
 }
 
-body {
+#submit-job{
+	float:right;
+}
+
+
+/*body {
 	min-height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -86,7 +91,7 @@ label{
 .login-space{
 	margin-top: 30px;
 }
- p{
+p{
 	 color: aliceblue;
  }
 
@@ -97,7 +102,7 @@ label{
 
 .newUser{
 	margin-top: 30px;
-}
+}*/
 /* .myNavBar{
 	opacity: 0.8;
 } */
