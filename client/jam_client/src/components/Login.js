@@ -63,9 +63,9 @@ class Login extends Component{
 								<input type="password" className="loginInput" id="pwd" placeholder="Password"/>
 							</div>
 						
-							<button type="submit" className="btn btn-primary login-space">Submit</button><br/
+							<button type="submit" className="btn btn-primary login-space">Submit</button><br/>
 							<div className="newUser">
-								<NavLink to="/register">New User</NavLink><br/>
+								<NavLink to="/register">New User</NavLink><br />
 							</div>
 					</div>
 				</form>	

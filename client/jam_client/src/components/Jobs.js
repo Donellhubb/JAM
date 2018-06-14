@@ -33,6 +33,17 @@ class Jobs extends Component{
 		})
 	}
 
+	formatTime(time){
+		console.log(time)
+		let date = new Date(time);
+		let dateTime = (date.toString().split(" GMT"))
+		return(
+			<div>
+			{dateTime[0]}
+			</div>
+		)
+	}
+
 
 
 	render(){
@@ -43,14 +54,14 @@ class Jobs extends Component{
 				<li>
 					<div className="container">
 						<div className="row justify-content-md-center">
-							<div className="jumbotron col-md-6 col-md-offset-3 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3">
-								<Link to={`/job/${data.id}`} >
+							<Link to={`/job/${data.id}`}  >
+								<div id="jumboJob" className="jumbotron col-md-6 col-md-offset-3 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3">
 									<h2> Job# {data.id} </h2>
 									<hr />
-									<h4> Time: {data.time} </h4>
+									<h4> Time: {this.formatTime(data.time)} </h4>
 									<h4> Description: {data.description} </h4>
-								</Link>
-							</div>
+								</div>
+							</Link>
 						</div>
 					</div>
 				</li>

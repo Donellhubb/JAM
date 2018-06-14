@@ -40,6 +40,7 @@ label.active{
 body {
 	min-height: 100vh;
 	position: relative;
+	background-color: cornsilk;
 }
 
 .bgbody{
@@ -137,4 +138,7 @@ p{
 	float:right;
 }
 
+#jumboJob:hover{
+	border: black 2px solid;
+}
 
