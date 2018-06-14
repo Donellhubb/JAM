@@ -1,3 +1,4 @@
+
 .jobs-list{
 	list-style-type: none;
 }
@@ -10,7 +11,8 @@
 }
 
 li.active{
-	/*border-bottom: 10px solid red;*/
+	border-bottom: 10px solid #0037b4;
+
 	text-decoration: underline;
 	font-weight: bold
 }
@@ -44,4 +46,63 @@ label.active{
 	}
 }
 
+#submit-job{
+	float:right;
+}
 
+
+/*body {
+	min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+	background-size: cover;
+	background-image:  url("/image_1.jpg");
+}
+
+.login{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 350px;
+	height: 420px;
+	box-sizing: border-box;
+	background: rgba(0, 0, 0, .7);
+  }
+  .register{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 350px;
+	height: 420px;
+	box-sizing: border-box;
+	background: rgba(0, 0, 0, .7);
+  }
+input {
+	opacity: .5;
+} 
+h1{
+color: aliceblue;
+}
+label{
+	color: aliceblue;
+}
+.login-space{
+	margin-top: 30px;
+}
+p{
+	 color: aliceblue;
+ }
+
+.jumbotron{
+	background-color:#00b1b1;
+	color: white;
+}
+
+.newUser{
+	margin-top: 30px;
+}*/
+/* .myNavBar{
+	opacity: 0.8;
+} */

@@ -103,7 +103,7 @@ class Window extends Component{
                     </FormGroup>
                   </div>
                 </div>
-                <Button type="submit">Submit</Button>
+                <Button type="submit" bsStyle="primary">Submit</Button>
               </div>
             </form>
         </div>

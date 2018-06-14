@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter, Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 import Register from './components/Register';
 
 const App1 = () => {
@@ -27,4 +26,3 @@ const App1 = () => {
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();

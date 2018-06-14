@@ -36,7 +36,7 @@ class CabinetEdit extends Component{
 			cabinet: this.props.cabinet,
 			job: this.props.cabinet.job,
 		})
-		console.log(this.props.index)
+		// console.log(this.props.index)
 		document.getElementById(`cabinetType${this.props.index}`).setAttribute("value", this.props.cabinet.type)
 		document.getElementById(`cabinetColor${this.props.index}`).setAttribute("value", this.props.cabinet.color)
 		document.getElementById(`cabinetHeight${this.props.index}`).setAttribute("value", this.props.cabinet.height)
