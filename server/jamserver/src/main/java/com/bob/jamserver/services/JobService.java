@@ -43,9 +43,7 @@ public class JobService {
 	public void updateJob(Long jobId,String description) {
 		Job completedJob = jobRepo.findJobById(jobId);
 		completedJob.setCompleted(true);
-        System.out.println("job desc in service to update "+description);
-//
-//		completedJob.setDescription(description);
+		completedJob.setDescription(description);
 		jobRepo.save(completedJob);
 		
 	}

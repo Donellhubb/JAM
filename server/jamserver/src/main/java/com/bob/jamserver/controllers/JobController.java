@@ -35,10 +35,9 @@ public class JobController{
 		System.out.println("is user passing "+job.getUser());
 		String userEmail = user.getEmail();
 		Long userId = user.getId();
-		System.out.println("Can i get userId "+ userId);
-//		Job job = jobService.findJobById(job.);
+
 		Long jobId = job.getId();
-		System.out.println("is job null "+jobId);
+
 		Date time = job.getTime();
 		String jobDescription = job.getDescription();
 		System.out.println("job desc"+ jobDescription);

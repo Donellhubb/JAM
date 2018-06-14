@@ -27,8 +27,8 @@ public class EmailConfig {
     }
     public Mail emailSent(String email,Long id,String Description) {
         Email from = new Email("bobigbarumah@gmail.com");
-        String subject = "Job has been completed";
-        System.out.println("in email sent "+ email);
+        String subject = "completed";
+        System.out.println("in email sent "+ id);
         Email to = new Email(email);
         Content content = new Content("text/plain", "\"Job number \"+id+ \" with the following description \"+ Description+\" has been completed\"");
         Mail mail = new Mail(from, subject, to, content);
