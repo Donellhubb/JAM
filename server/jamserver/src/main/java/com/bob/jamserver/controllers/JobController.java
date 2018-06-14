@@ -27,7 +27,10 @@ public class JobController{
 	public  void jobCompleted(@RequestBody Job job) throws IOException {
 		String userEmail = job.getUser().getEmail();
 		Long jobId = job.getId();
+		String time = job.getTime();
 		String jobDescription = job.getDescription();
+	
+		jobService.updateJob(jobId, time, jobDescription);
 		jobService.emailConfirmation(userEmail,jobId,jobDescription);
 
 	}

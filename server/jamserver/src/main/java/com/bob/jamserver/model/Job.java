@@ -12,7 +12,7 @@ public class Job {
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
    
-   
+   private Boolean completed;
    private String time;
    private String description;
    @ManyToOne(fetch= FetchType.LAZY)
@@ -37,6 +37,16 @@ public class Job {
 
 public void setUser(User user) {
 	this.user = user;
+}
+
+
+public Boolean getCompleted() {
+	return completed;
+}
+
+
+public void setCompleted(Boolean completed) {
+	this.completed = completed;
 }
 
 

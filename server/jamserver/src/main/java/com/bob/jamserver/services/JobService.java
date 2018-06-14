@@ -39,5 +39,13 @@ public class JobService {
 	public void emailConfirmation(String userEmail,Long jobId,String Description) throws IOException {
 		config.emails(userEmail,jobId,Description);
 	}
+	public void updateJob(Long jobId,String time,String description) {
+		Job completedJob = jobRepo.findJobById(jobId);
+		completedJob.setCompleted(true);
+		completedJob.setTime(time);
+		completedJob.setDescription(description);
+		jobRepo.save(completedJob);
+		
+	}
 	
 }
