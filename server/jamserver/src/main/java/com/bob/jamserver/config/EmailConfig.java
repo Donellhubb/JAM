@@ -10,7 +10,7 @@ public class EmailConfig {
 	public void emails(String userEmail,Long jobId,String Description)throws IOException{
         System.out.println("in config "+userEmail);
         Mail mail = emailSent(userEmail,jobId,Description);
-        SendGrid sg = new SendGrid("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");
+        SendGrid sg = new SendGrid("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");
         Request request = new Request();
         try {
             request.setMethod(Method.POST);
