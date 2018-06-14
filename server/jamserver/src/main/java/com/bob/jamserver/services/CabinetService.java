@@ -19,9 +19,27 @@ public class CabinetService {
 	}
 
 
-	public List<Cabinet> getCabinetsForJob(Long jobId){
-		return cabinetRepository.findCabinetsByJobId(jobId);
+	public void updateCabinet(Long id,String type,int hinges,int screws,int quantity,double height
+			,double width,String color){
 
+		Cabinet cabinet = cabinetRepository.findCabinetById(id);
+		cabinet.setColor(color);
+		cabinet.setHeight(height);
+		cabinet.setType(type);
+		cabinet.setHinges(hinges);
+		cabinet.setQuantity(quantity);
+		cabinet.setWidth(width);
+		cabinet.setScrews(screws);
+		cabinetRepository.save(cabinet);
+	}
+
+	public List<Cabinet> getCabinetsForJob(Long jobId){
+		return cabinetRepository.findByJobIdOrderByIdDesc(jobId);
+
+	}
+
+	public void deleteCabinet(Long cabinetId) {
+		cabinetRepository.deleteById(cabinetId);
 	}
 
 }

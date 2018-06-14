@@ -23,7 +23,7 @@ class Jobs extends Component{
 		});
 
 		getToken.then((jobData)=>{
-			 console.log("are there jobss",jobData.data);
+			 // console.log("are there jobss",jobData.data);
 			 // console.log(jobData.data[0].customer.id)
 			this.setState({
 				jobs: jobData.data

@@ -18,7 +18,27 @@ public class DoorService {
 	}
 
 	public List<Door> getDoorsForJob(Long jobId){
-		return  doorRepo.findDoorsByJobID(jobId);
+		return  doorRepo.findByJobIdOrderByIdDesc(jobId);
+	}
+
+	public void updateDoor(Long id, String type,int hinges,int screws,double height,double width,String color
+			,int quantity){
+
+		Door door = doorRepo.findDoorById(id);
+
+		door.setColor(color);
+		door.setHeight(height);
+		door.setHinges(hinges);
+		door.setQuantity(quantity);
+		door.setType(type);
+		door.setWidth(width);
+		door.setScrews(screws);
+
+		doorRepo.save(door);
+	}
+
+	public void deleteDoor(Long doorId) {
+		doorRepo.deleteById(doorId);
 	}
 
 }

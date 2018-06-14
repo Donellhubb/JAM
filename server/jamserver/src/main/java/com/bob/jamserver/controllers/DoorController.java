@@ -25,4 +25,33 @@ public class DoorController {
 		return doors;
 	}
 
+	@RequestMapping(value="/edit/door",method=RequestMethod.POST)
+	public HashMap<String, List<Door>> updateDoor(@RequestBody Door door){
+		String type = door.getType();
+		int hinges = door.getHinges();
+		int screws = door.getScrews();
+		double height = door.getHeight();
+		double width = door.getWidth();
+		String color = door.getColor();
+		int quantity = door.getQuantity();
+
+
+		Long jobId = door.getJob().getId();
+
+		doorService.updateDoor(door.getId(),type,hinges,screws,height,width,color,quantity);
+		List<Door> Jobdoors = doorService.getDoorsForJob(jobId);
+		doors.put("DoorCreatedSuccessfully",Jobdoors );
+		return doors;
+	}
+
+	@RequestMapping(value="/delete/door", method=RequestMethod.POST)
+	public HashMap<String, List<Door>> deleteDoor(@RequestBody Door door) {
+		Long jobId = door.getJob().getId();
+		doorService.deleteDoor(door.getId());
+		List<Door> Jobdoors = doorService.getDoorsForJob(jobId);
+		doors.put("DoorCreatedSuccessfully",Jobdoors );
+		return doors;
+	}
+
+
 }

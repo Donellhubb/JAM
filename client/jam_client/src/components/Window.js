@@ -30,9 +30,10 @@ class Window extends Component{
     const quantity = document.getElementById('window_quantity').value
     const color = document.getElementById('window_color').value
     const job = this.props.job_id
+    
     const windowCreate = axios({
       method: 'POST',
-      url: "http://192.168.88.181:8080/window/create",
+      url: url.url + "window/create",
       data:{
         job,
         type,
@@ -43,7 +44,9 @@ class Window extends Component{
       }
     })
     windowCreate.then(data=>{
-      console.log(data)
+      this.props.updateWindow(data);
+
+      // console.log("YOO")
     })
   }
 
@@ -70,7 +73,7 @@ class Window extends Component{
 
 
                 <div className="modal-body row">
-                  <div className="col-md-4">
+                  <div className="col-md-3">
                       <FormGroup bsSize="large">
                         <ControlLabel>Color</ControlLabel>
                       <FormControl componentClass="select" placeholder="Color" id="window_color">
@@ -81,30 +84,27 @@ class Window extends Component{
                         </FormControl>
                     </FormGroup>
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-3">
                     <FormGroup bsSize="large">
                         <ControlLabel>Height (in.)</ControlLabel>
-                      <FormControl type="number" placeholder="0" id="window_height" min="0" />
+                      <FormControl type="number" step="0.1" placeholder="0" id="window_height" min="0" />
                     </FormGroup>
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-3">
                     <FormGroup bsSize="large">
                         <ControlLabel>Width (in.)</ControlLabel>
-                      <FormControl type="number" placeholder="0" id="window_width" min="0" />
+                      <FormControl type="number" step="0.1" placeholder="0" id="window_width" min="0" />
                     </FormGroup>
                   </div>
-                </div>
-                
-                <div className="modal-body row">
-                  <div className="col-md-4">
+                  <div className="col-md-3">
                       <FormGroup bsSize="large">
                         <ControlLabel>Quantity</ControlLabel>
-                      <FormControl type="number" placeholder="1" id="window_quantity" min="1" />
+                        <FormControl type="number" placeholder="1" id="window_quantity" min="1" />
                     </FormGroup>
                   </div>
                 </div>
+                <Button type="submit">Submit</Button>
               </div>
-              <Button type="submit">Submit</Button>
             </form>
         </div>
       </div>

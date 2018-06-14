@@ -12,6 +12,7 @@
 
 li.active{
 	border-bottom: 10px solid #0037b4;
+
 	text-decoration: underline;
 	font-weight: bold
 }
@@ -28,12 +29,23 @@ label.active{
 	background-color: blue;
 }
 
+#trash:hover{
+	color:#1a0dab;
+	cursor: pointer;
+}
+
+#editing:hover{
+	color:#1a0dab;
+	cursor: pointer;
+}
+
 
 @media only screen and (max-width: 600px) {
 	.nav.nav-tabs{
 		font-size: 100%;
 	}
 }
+
 body {
 	min-height: 100vh;
     background-position: center;
