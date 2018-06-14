@@ -44,7 +44,7 @@ public class CabinetController {
 		Long jodId =  cabinet.getJob().getId();
 		cabinetService.updateCabinet(cabinet.getId(),type,hinges,screws,quantity,height,width,color);
 
-		System.out.println("in cabinet updated "+cabinetService.getCabinetsForJob(jodId) );
+		
 		cabinets.put("CabinetCreatedSuccessfully",cabinetService.getCabinetsForJob(jodId));
 		return cabinets;
 	}
