@@ -37,18 +37,25 @@ public class JobService {
 	}
 	
 	public void emailConfirmation(String userEmail,Long jobId,String Description) throws IOException {
+        System.out.println(userEmail);
 		config.emails(userEmail,jobId,Description);
 	}
-	public void updateJob(Long jobId,String time,String description) {
+	public void updateJob(Long jobId,String description) {
 		Job completedJob = jobRepo.findJobById(jobId);
 		completedJob.setCompleted(true);
-		completedJob.setTime(time);
-		completedJob.setDescription(description);
+        System.out.println("job desc in service to update "+description);
+//
+//		completedJob.setDescription(description);
 		jobRepo.save(completedJob);
 		
 	}
-	public List<Job> jobsTodo(Long userId){
-		return jobRepo.findJobsByUserIdByCompletedTrue(userId);
+	public List<Job> jobsDone(Long userId){
+		return jobRepo.findJobsByUserIdAndCompletedTrue(userId);
 	}
+
+	public List<Job> jobsTodo(Long userId){
+	    return jobRepo.findJobsByUserIdAndCompletedFalse(userId);
+    }
+
 	
 }

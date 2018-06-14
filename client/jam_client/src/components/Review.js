@@ -33,18 +33,19 @@ class Review extends Component{
  	}
 
 
- 	submitJob(job, token){
+ 	submitJob(job){
  		// console.log(job)
- 		// console.log(token)
- 		// const completeJob = axios({
- 		// 	method: "POST",
- 		// 	url: url.url + "completed",
- 		// 	data:{
- 		// 		job,
- 		// 		token
- 		// 	}
- 		// }).then(data=>{
- 		// })
+ 		// console.log(job.user)
+ 		const completeJob = axios({
+ 			method: "POST",
+ 			url: url.url + "completed",
+ 			data:{
+ 				id: job.id,
+ 				user: job.user
+ 			}
+ 		}).then(data=>{
+ 			// console.log(data);
+ 		})
  			this.props.history.push('/jobs');
  	}
 
@@ -161,7 +162,7 @@ class Review extends Component{
  		// console.log(cabinets)
  		return(
  			<div>
- 				<Button type="submit" id="submit-job" bsStyle="primary" onClick={()=> {this.submitJob(this.props.job, localStorage.token)}}>Submit Job</Button>
+ 				<Button type="submit" id="submit-job" bsStyle="primary" onClick={()=> {this.submitJob(this.props.job)}}>Submit Job</Button>
  				{cabinets != undefined
  					?
  					<div>

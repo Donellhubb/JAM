@@ -21,8 +21,10 @@ class Jobs extends Component{
 				token: this.state.token
 			}
 		});
-
 		getToken.then((jobData)=>{
+			setTimeout(300);
+			// debugger
+			console.log(jobData)
 			 // console.log("are there jobss",jobData.data);
 			 // console.log(jobData.data[0].customer.id)
 			this.setState({
