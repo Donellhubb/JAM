@@ -74,7 +74,7 @@ public class UserController {
 			User empl = userService.findByToken(user.getToken());
 			empl.getId();
 			jobService.findUserJobs(empl.getId());
-			System.out.println("successful ");
+		
 			return jobService.findUserJobs(empl.getId());
 		}
 		return empty;
