@@ -5,6 +5,8 @@ import com.bob.jamserver.services.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @CrossOrigin
 @RestController
 public class JobController{
@@ -19,5 +21,11 @@ public class JobController{
 		Job cust = jobService.findJobById(job.getId());
 
 		return cust;
+	}
+	@RequestMapping(value="/completed", method = RequestMethod.POST)
+	public  void jobCompleted(@RequestBody Job job) throws IOException {
+		
+		jobService.emailConfirmation();
+
 	}
 }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import url from '../url';
-import {Table} from 'react-bootstrap';
+import {Table, Button} from 'react-bootstrap';
 import WindowEdit from './WindowEdit';
 import DoorEdit from './DoorEdit';
 import CabinetEdit from './CabinetEdit';
@@ -13,6 +13,7 @@ class Review extends Component{
 		this.state={
 		}
 		this.getProducts = this.getProducts.bind(this);
+		this.submitJob = this.submitJob.bind(this);
 		// this.handleWindowEdit = this.handleWindowEdit.bind(this);
  	}
 
@@ -57,6 +58,17 @@ class Review extends Component{
  			this.props.updateDoor(data);
  		})
  	}
+
+ 	submitJob(data){
+ 		const submitted= axios({
+ 			method: "POST",
+ 			url: url.url + "completed",
+ 			data:{
+ 				job: data
+ 			}
+ 		})
+ 	}
+
 
 
  	getProducts(){
@@ -143,6 +155,7 @@ class Review extends Component{
  		// console.log(cabinets)
  		return(
  			<div>
+ 				<Button type="submit" id="submit-job" bsStyle="primary" onClick={()=> {this.submitJob(this.props.job)}}>Submit Job</Button>
  				{cabinets != undefined
  					?
  					<div>
