@@ -13,7 +13,6 @@ class Login extends Component{
     }
   }
 
-
   handleLogin(event){
   	event.preventDefault();
 
@@ -48,10 +47,10 @@ class Login extends Component{
     // console.log(url.url)
   	// JSX DEMANDS all self-closing tags, be closed with a /
     return(
-    <div className="container bg">
+    <div className="container" >
 			
 				
-				<form onSubmit={this.handleLogin} className="loginform">
+				<form onSubmit={this.handleLogin} className="loginform login">
 					<div>
 					<h1> Login </h1>
 							<div className="form-group email login-space">

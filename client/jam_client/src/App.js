@@ -17,7 +17,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Route path = "/" component={NavBar}/>
-          <Route exact path = "/login" component={Login}/>
+          <Route exact path = "/" component={Login}/>
           <Route exact path = "/register" component={Register}/>  
           <Route exact path = "/jobs" component={Jobs} />
           <Route path="/job/:job_id" component={SingleJob} />    
