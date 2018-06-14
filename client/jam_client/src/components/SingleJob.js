@@ -6,6 +6,7 @@ import Window from './Window';
 import Cabinet from './Cabinet';
 import Review from './Review';
 import { Tabs, Tab } from 'react-bootstrap';
+import {Route} from 'react-router-dom';
 
 class SingleJob extends Component{
 	constructor(){
@@ -47,11 +48,10 @@ class SingleJob extends Component{
 		this.setState({
 			door: doorArr
 		})
-		// console.log("YOOOOOOO we hurrr: ")
-		// console.log(this.state.door)
 	}
 
 	updateWindow(windowArr){
+		// console.log("YPPPPPPPPPPPPPPPPPPP")
 		this.setState({
 			window: windowArr
 		})
@@ -60,6 +60,7 @@ class SingleJob extends Component{
 	}
 
 	updateCabinet(cabinetArr){
+		// console.log(cabinetArr.data.CabinetCreatedSuccessfully)
 		this.setState({
 			cabinet: cabinetArr
 		})
@@ -101,7 +102,12 @@ class SingleJob extends Component{
 									<Cabinet job_id={this.state.job} updateCabinet={this.updateCabinet}/>
 								</Tab>
 								<Tab eventKey={4} title="Review/Edit">
-									<Review cabinet={this.state.cabinet} window={this.state.window} door={this.state.door}/>
+									<Route
+										path={'/'}
+										render={(props) => 
+										      	<Review history={props.history} job={this.state.job} cabinet={this.state.cabinet} window={this.state.window} door={this.state.door} updateCabinet={this.updateCabinet} updateWindow={this.updateWindow} updateDoor={this.updateDoor} />
+										      }
+									/>
 								</Tab>
 							</Tabs>
 						</div>

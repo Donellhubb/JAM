@@ -45,7 +45,7 @@ public class UserController {
 			data.put("msg","error");
 			return data;
 		}
-		System.out.println(user.getPassword());
+
 		if(userService.checkEmailExists(user.getEmail())){
 			if(userService.authenticateUser(user.getEmail(),user.getPassword())) {
 				String token = userService.updateToken(user.getEmail());
@@ -74,8 +74,8 @@ public class UserController {
 			User empl = userService.findByToken(user.getToken());
 			empl.getId();
 			jobService.findUserJobs(empl.getId());
-			System.out.println("successful ");
-			return jobService.findUserJobs(empl.getId());
+			List<Job> uncompletedJobs = jobService.jobsTodo(empl.getId());
+			return uncompletedJobs;
 		}
 		return empty;
 	}

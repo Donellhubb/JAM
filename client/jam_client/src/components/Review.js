@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import url from '../url';
-import {Table} from 'react-bootstrap';
+import {Table, Button} from 'react-bootstrap';
 import WindowEdit from './WindowEdit';
 import DoorEdit from './DoorEdit';
 import CabinetEdit from './CabinetEdit';
@@ -13,7 +13,67 @@ class Review extends Component{
 		this.state={
 		}
 		this.getProducts = this.getProducts.bind(this);
-		// this.handleWindowEdit = this.handleWindowEdit.bind(this);
+		this.submitJob = this.submitJob.bind(this);
+ 	}
+
+ 	deleteWindow(data){
+ 		// debugger
+ 		// console.log(data.id)
+ 		// const window_id = data.id
+ 		const deleted = axios({
+ 			method: "POST",
+ 			url: url.url +"delete/window",
+ 			data:{
+ 				job: data.job,
+ 				id: data.id,
+ 			}
+ 		}).then(data=>{
+ 			this.props.updateWindow(data);
+ 		})
+ 	}
+
+
+ 	submitJob(job){
+ 		// console.log(job)
+ 		// console.log(job.user)
+ 		const completeJob = axios({
+ 			method: "POST",
+ 			url: url.url + "completed",
+ 			data:{
+ 				id: job.id,
+ 				user: job.user
+ 			}
+ 		}).then(data=>{
+ 			// console.log(data);
+ 		})
+ 			this.props.history.push('/jobs');
+ 	}
+
+
+ 	 deleteCabinet(data){
+ 		const deleted = axios({
+ 			method: "POST",
+ 			url: url.url +"delete/cabinet",
+ 			data:{
+ 				job: data.job,
+ 				id: data.id
+ 			}
+ 		}).then(data=>{
+ 			this.props.updateCabinet(data);
+ 		})
+ 	}
+
+ 	 	deleteDoor(data){
+ 		const deleted = axios({
+ 			method: "POST",
+ 			url: url.url +"delete/door",
+ 			data:{
+ 				job: data.job,
+ 				id: data.id
+ 			}
+ 		}).then(data=>{
+ 			this.props.updateDoor(data);
+ 		})
  	}
 
 
@@ -24,11 +84,15 @@ class Review extends Component{
  		 let windows
  		if(this.props.cabinet.data != undefined){
  			// console.log("Yoo")
+ 			// console.log(this.props.cabinet.data.CabinetCreatedSuccessfully)
  			cabinets = this.props.cabinet.data.CabinetCreatedSuccessfully.map((data, index)=>{
 			// console.log(this.props.cabinet.data.CabinetCreatedSuccessfully) 		
  			// console.log(index);
+
+ 			// console.log(data.color)
+
  				return(
-					<tr>
+					<tr key = {index} className='cabinetList'>
 						<td>{data.type}</td>
 						<td>{data.color}</td>
 						<td>{data.height}</td>
@@ -36,27 +100,39 @@ class Review extends Component{
 						<td>{data.quantity}</td>
 						<td>{data.hinges}</td>
 						<td>{data.screws}</td>
+						<td>
+							<CabinetEdit index={index} cabinet={data} updateCabinet={this.props.updateCabinet}/>
+       					</td>
+          				<td>
+	       					<span className="glyphicon glyphicon-trash" id="trash" id='trash' onClick={()=>{this.deleteCabinet(data)}}></span>
+	       				</td>	
 					</tr>
  				)
+
  			});
  		}
-
 
  		if(this.props.door.data != undefined){
  			// console.log("YO")
  			doors = this.props.door.data.DoorCreatedSuccessfully.map((data, index)=>{
- 			return(
- 				<tr>
-					<td>{data.type}</td>
-					<td>{data.color}</td>
-					<td>{data.height}</td>
-					<td>{data.width}</td>
-					<td>{data.quantity}</td>
-					<td>{data.hinges}</td>
-					<td>{data.screws}</td>
-				</tr>
- 			)
- 		})
+	 			return(
+	 				<tr key = {index} className='doorList'>
+						<td>{data.type}</td>
+						<td>{data.color}</td>
+						<td>{data.height}</td>
+						<td>{data.width}</td>
+						<td>{data.quantity}</td>
+						<td>{data.hinges}</td>
+						<td>{data.screws}</td>
+						<td>
+							<DoorEdit index={index} door={data} updateDoor={this.props.updateDoor} />
+	       				</td>
+	       				<td>
+	       					<span className="glyphicon glyphicon-trash" id="trash" id='trash' onClick={()=>{this.deleteDoor(data)}}></span>
+	       				</td>	
+					</tr>
+	 			)
+ 			})
 
  		}
 
@@ -64,8 +140,9 @@ class Review extends Component{
  			// this.handleWindowEdit()
  			windows = this.props.window.data.WindowCreatedSuccessfully.map((data, index)=>{
 
- 				console.log(index)
+ 				// console.log(index)
  				return(
+
 	 				<tr key = {index} className='windowList'>
 						<td>{data.type}</td>
 						<td>{data.color}</td>
@@ -73,8 +150,11 @@ class Review extends Component{
 						<td>{data.width}</td>
 						<td>{data.quantity}</td>
 						<td>
-							<WindowEdit index={index} window={data} />
-       					</td>		
+							<WindowEdit index={index} window={data} updateWindow={this.props.updateWindow} />
+       					</td>
+            			<td>
+	       					<span className="glyphicon glyphicon-trash" id='trash' onClick={()=> {this.deleteWindow(data)}}></span>
+	       				</td>		
 					</tr>
  				)
  			})
@@ -82,6 +162,7 @@ class Review extends Component{
  		// console.log(cabinets)
  		return(
  			<div>
+ 				<Button type="submit" id="submit-job" bsStyle="primary" onClick={()=> {this.submitJob(this.props.job)}}>Submit Job</Button>
  				{cabinets != undefined
  					?
  					<div>

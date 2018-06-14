@@ -11,12 +11,16 @@ import java.util.List;
 @Repository
 
 public interface JobRepository extends CrudRepository<Job, Long>{
-//	@Query("select j from Job j where j.user.id=#{principal.id}")
+
 	    List<Job> findAll();
 	    Job findJobById(Long id);
 	    List<Job> findJobsByUserId(Long id);
 	    List<Job> findJobsByCustomerId(Long id);
 	    Customer findCustomerById(Long id);
+//	    List<Job> findJobsByUserIdCompletedFalse(Long id);;
+	    List<Job> findJobsByUserIdAndCompletedTrue(Long id);
+		List<Job> findJobsByUserIdAndCompletedFalse(Long id);
+
 
 
 	

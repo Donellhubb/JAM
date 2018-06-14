@@ -31,4 +31,31 @@ public class CabinetController {
 		return cabinets ;
 	}
 
+	@RequestMapping(value="/edit/cabinet",method=RequestMethod.POST)
+	public HashMap<String, List<Cabinet>> updateCabinet(@RequestBody Cabinet cabinet){
+		String type = cabinet.getType();
+		int hinges = cabinet.getHinges();
+		int screws = cabinet.getScrews();
+		int quantity = cabinet.getQuantity();
+		double height = cabinet.getHeight();
+		double width = cabinet.getWidth();
+		String color = cabinet.getColor();
+
+		Long jodId =  cabinet.getJob().getId();
+		cabinetService.updateCabinet(cabinet.getId(),type,hinges,screws,quantity,height,width,color);
+
+		
+		cabinets.put("CabinetCreatedSuccessfully",cabinetService.getCabinetsForJob(jodId));
+		return cabinets;
+	}
+
+	@RequestMapping(value="/delete/cabinet", method=RequestMethod.POST)
+	public HashMap<String , List<Cabinet>> deleteCabinet(@RequestBody Cabinet cabinet) {
+		Long jobId = cabinet.getJob().getId();
+		cabinetService.deleteCabinet(cabinet.getId());
+		cabinetService.getCabinetsForJob(jobId);
+		cabinets.put("CabinetCreatedSuccessfully", cabinetService.getCabinetsForJob(jobId));
+		return cabinets;
+	}
+
 }

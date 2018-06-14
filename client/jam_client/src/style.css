@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 .jobs-list{
 	list-style-type: none;
 }
@@ -11,7 +11,8 @@
 }
 
 li.active{
-	/*border-bottom: 10px solid red;*/
+	border-bottom: 10px solid #0037b4;
+
 	text-decoration: underline;
 	font-weight: bold
 }
@@ -27,8 +28,6 @@ li.active{
 label.active{
 	background-color: blue;
 }
-
-=======
 
 
 /* body {
@@ -116,14 +115,26 @@ p{
 .loginRegisterImage{
 	background-image:  url("/image_1.jpg");
 }
->>>>>>> Stashed changes
+
+#trash:hover{
+	color:#1a0dab;
+	cursor: pointer;
+}
+
+#editing:hover{
+	color:#1a0dab;
+	cursor: pointer;
+}
+
 
 @media only screen and (max-width: 600px) {
 	.nav.nav-tabs{
 		font-size: 100%;
-	}
-<<<<<<< Updated upstream
+  }
 }
-=======
+
+#submit-job{
+	float:right;
 }
->>>>>>> Stashed changes
+
+

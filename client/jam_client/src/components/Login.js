@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
+import {BrowserRouter, Route, Link, NavLink, Switch, Redirect } from 'react-router-dom'
 import axios from 'axios';
 import url from '../url';
-import '../index.css';
+import '../style.css';
 
 class Login extends Component{
   constructor(){
@@ -11,7 +12,6 @@ class Login extends Component{
       message: ""
     }
   }
-
 
   handleLogin(event){
   	event.preventDefault();
@@ -47,22 +47,6 @@ class Login extends Component{
     // console.log(url.url)
   	// JSX DEMANDS all self-closing tags, be closed with a /
     return(
-<<<<<<< Updated upstream
-    <div className="container">
-      <h1> Login </h1>
-  		<form onSubmit={this.handleLogin} className="loginform">
-  		  <div className="form-group ">
-  		    <label htmlFor="email">Email address:</label>
-  		    <input type="email" className="form-control" id="email" placeholder="example@gmail.com"/>
-  		  </div>
-  		  <div className="form-group">
-  		    <label htmlFor="pwd" >Password:</label>
-  		    <input type="password" className="form-control" id="pwd" placeholder="Password"/>
-  		  </div>
-  		  
-  		  <button type="submit" className="btn btn-default">Submit</button>
-  		</form>
-=======
 		<div>
 		<div className="bgbody"></div>
     <div className="container" >
@@ -79,14 +63,13 @@ class Login extends Component{
 								<input type="password" className="loginInput" id="pwd" placeholder="Password"/>
 							</div>
 						
-							<button type="submit" className="btn btn-primary login-space">Submit</button><br/>
-						
+							<button type="submit" className="btn btn-primary login-space">Submit</button><br/
 							<div className="newUser">
 								<NavLink to="/register">New User</NavLink><br/>
 							</div>
 					</div>
 				</form>	
->>>>>>> Stashed changes
+
 	 </div>
 	 </div>
 	 

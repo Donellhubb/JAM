@@ -3,6 +3,7 @@ package com.bob.jamserver.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name= "job")
@@ -12,8 +13,8 @@ public class Job {
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
    
-   
-   private String time;
+   private Boolean completed;
+   private Date time;
    private String description;
    @ManyToOne(fetch= FetchType.LAZY)
    @JoinColumn(name = "user_id")
@@ -37,6 +38,16 @@ public class Job {
 
 public void setUser(User user) {
 	this.user = user;
+}
+
+
+public Boolean getCompleted() {
+	return completed;
+}
+
+
+public void setCompleted(Boolean completed) {
+	this.completed = completed;
 }
 
 
@@ -65,16 +76,11 @@ public void setCustomer(Customer customer) {
        this.id = id;
    }
 
-   public String getTime() {
-       return time;
-   }
+    public Date getTime() {
+        return time;
+    }
 
-   public void setTime(String time) {
-       this.time = time;
-   }
-
-   
-
-   
-
+    public void setTime(Date time) {
+        this.time = time;
+    }
 }

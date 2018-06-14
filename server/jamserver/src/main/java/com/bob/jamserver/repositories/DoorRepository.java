@@ -9,6 +9,9 @@ import java.util.List;
 @Repository
 public interface DoorRepository extends CrudRepository<Door,Long> {
 	List<Door> findAll();
-	List<Door> findDoorsByJobId(Long id);
+	List<Door> findByJobIdOrderByIdDesc(Long id);
+	Door findDoorById(Long id);
+	void deleteById(Long id);
+
 
 }

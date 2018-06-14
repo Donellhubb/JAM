@@ -17,6 +17,22 @@ public class WindowService {
     }
 
     public List<Window> getWindowsForJob(Long jobId){
-        return  windowRepository.findWindowsByJobId(jobId);
+        return  windowRepository.findByJobIdOrderByIdDesc(jobId);
+    }
+
+    public void updateWindow(Long id,String type,double height,double width,int quantity,String color){
+        Window windowToUpdate = windowRepository.findWindowById(id);
+
+        windowToUpdate.setColor(color);
+        windowToUpdate.setHeight(height);
+        windowToUpdate.setQuantity(quantity);
+        windowToUpdate.setWidth(width);
+        windowToUpdate.setType(type);
+
+        windowRepository.save(windowToUpdate);
+    }
+
+    public void deleteWindow(Long windowId) {
+        windowRepository.deleteById(windowId);
     }
 }
