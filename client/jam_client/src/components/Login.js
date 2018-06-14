@@ -47,29 +47,32 @@ class Login extends Component{
     // console.log(url.url)
   	// JSX DEMANDS all self-closing tags, be closed with a /
     return(
+		<div>
+		<div className="bgbody"></div>
     <div className="container" >
 			
-				
-				<form onSubmit={this.handleLogin} className="loginform login">
+				<form onSubmit={this.handleLogin} className="loginform loginRegisterWindow">
 					<div>
-					<h1> Login </h1>
+					<h1 className="loginRegisterH1"> Login </h1>
 							<div className="form-group email login-space">
-								<label htmlFor="email">Email address:</label>
-								<input type="email" className="form-control input-width" id="email" placeholder="example@gmail.com"/>
+								<label htmlFor="email" className="loginRegisterLabel">Email address:</label>
+								<input type="email" className="loginInput" id="email" placeholder="example@gmail.com"/>
 							</div>
 							<div className="form-group login-space">
-								<label htmlFor="pwd" >Password:</label>
-								<input type="password" className="form-control input-width1" id="pwd" placeholder="Password"/>
+								<label htmlFor="pwd" className="loginRegisterLabel">Password:</label>
+								<input type="password" className="loginInput" id="pwd" placeholder="Password"/>
 							</div>
 						
-							<button type="submit" className="btn btn-primary login-space">Submit</button><br/>
-							{/* <p className = "login-space">If you are a new user please register</p> */}
+							<button type="submit" className="btn btn-primary login-space">Submit</button><br/
 							<div className="newUser">
 								<NavLink to="/register">New User</NavLink><br/>
 							</div>
 					</div>
 				</form>	
+
 	 </div>
+	 </div>
+	 
     ) 
   }
 }

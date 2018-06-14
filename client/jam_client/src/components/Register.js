@@ -54,30 +54,36 @@ class Register extends Component{
   render(){
     // JSX DEMANDS all self-closing tags, be closed with a /
     return(
-  
-      <div className="container register">
-      <h1>Register</h1>
+
+      <div>
+      <div className="bgbody"></div>
+      <div className="container loginRegisterWindow ">
+      <h1 className="loginRegisterH1">Register</h1>
         <form onSubmit={this.handleRegister} className="login-form">
           <div className="form-group">
-            <label htmlFor="first-name">First Name:</label>
+            <label htmlFor="first-name" className="loginRegisterLabel">First Name:</label>
+
 
             <input type="text" className="form-control" id="fname" placeholder="First Name" />
           </div>
           <div className="form-group">
-            <label htmlFor="last-name">Last Name:</label>
+            <label htmlFor="last-name" className="loginRegisterLabel">Last Name:</label>
+
             <input type="text" className="form-control" id="lname" placeholder="Last Name" />
 
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email address:</label>
+            <label htmlFor="email" className="loginRegisterLabel">Email address:</label>
             <input type="email" className="form-control" id="email" placeholder="example@gmail.com"/>
           </div>
           <div className="form-group">
-            <label htmlFor="pwd">Password:</label>
+            <label htmlFor="pwd" className="loginRegisterLabel">Password:</label>
+
             <input type="password" className="form-control" id="pwd" placeholder="Password" />
           </div>
           <button type="submit" className="btn btn-primary">Register</button>
         </form>
+      </div>
       </div>
    
     ) 
