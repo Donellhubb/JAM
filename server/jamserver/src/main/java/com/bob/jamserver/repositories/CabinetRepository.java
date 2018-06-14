@@ -11,5 +11,6 @@ public interface CabinetRepository extends CrudRepository<Cabinet, Long> {
 	List<Cabinet> findAll();
 	List<Cabinet> findByJobIdOrderByIdDesc(Long Id);
 	Cabinet findCabinetById(Long id);
+	void deleteById(Long id);
 
 }

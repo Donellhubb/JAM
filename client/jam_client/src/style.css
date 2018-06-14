@@ -10,7 +10,7 @@
 }
 
 li.active{
-	border-bottom: 10px solid red;
+	/*border-bottom: 10px solid red;*/
 	text-decoration: underline;
 	font-weight: bold
 }
@@ -27,58 +27,21 @@ label.active{
 	background-color: blue;
 }
 
+#trash:hover{
+	color:#1a0dab;
+	cursor: pointer;
+}
+
+#editing:hover{
+	color:#1a0dab;
+	cursor: pointer;
+}
+
 
 @media only screen and (max-width: 600px) {
 	.nav.nav-tabs{
 		font-size: 100%;
 	}
 }
-body {
-    /* The image used */
-	background-image: 
-	url("/image_1.jpg");
 
-    /* Full height */
-	min-height: 100vh;
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-	background-size: cover;
-
-}
-.container{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 350px;
-	height: 420px;
-	box-sizing: border-box;
-	background: rgba(0, 0, 0, .7);
-  }
-input {
-	opacity: .5;
-} 
-h1{
-color: aliceblue;
-}
-label{
-	color: aliceblue;
-}
-.login-space{
-	margin-top: 30px;
-}
- p{
-	 color: aliceblue;
- }
-
-.jumbotron{
-	background-color:#00b1b1;
-	color: white;
-}
-
-.newUser{
-	margin-top: 30px;
-}
 

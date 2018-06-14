@@ -38,5 +38,8 @@ public class CabinetService {
 
 	}
 
+	public void deleteCabinet(Long cabinetId) {
+		cabinetRepository.deleteById(cabinetId);
+	}
 
 }

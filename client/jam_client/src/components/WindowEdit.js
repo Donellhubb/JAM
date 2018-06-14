@@ -66,7 +66,7 @@ class WindowEdit extends Component{
 		// console.log(this.props.window)
 		return(
 			<span>
-				<span data-toggle="modal" data-target={`#windowModal${this.props.index}`}>
+				<span data-toggle="modal" data-target={`#windowModal${this.props.index}`} id="editing" >
 					<Glyphicon glyph="edit" /> 
 				</span>
 

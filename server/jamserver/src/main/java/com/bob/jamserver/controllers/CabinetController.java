@@ -49,4 +49,13 @@ public class CabinetController {
 		return cabinets;
 	}
 
+	@RequestMapping(value="/delete/cabinet", method=RequestMethod.POST)
+	public HashMap<String , List<Cabinet>> deleteCabinet(@RequestBody Cabinet cabinet) {
+		Long jobId = cabinet.getJob().getId();
+		cabinetService.deleteCabinet(cabinet.getId());
+		cabinetService.getCabinetsForJob(jobId);
+		cabinets.put("CabinetCreatedSuccessfully", cabinetService.getCabinetsForJob(jobId));
+		return cabinets;
+	}
+
 }

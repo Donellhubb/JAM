@@ -39,8 +39,21 @@ public class WindowController {
         Long jobId = window.getJob().getId();
         windowService.updateWindow(window.getId(),type,height,width,quantity,color);
         List<Window> JobWindows = windowService.getWindowsForJob(jobId);
+        System.out.println("number of windows "+JobWindows.size());
         windows.put("WindowCreatedSuccessfully", JobWindows);
 
+        return windows;
+    }
+    @RequestMapping(value="/delete/window", method=RequestMethod.POST)
+    public HashMap<String,List<Window>> deleteWindow(@RequestBody Window window) {
+        Long jobId = window.getJob().getId();
+        System.out.println("window delete"+jobId);
+        System.out.println("window id "+ window.getId());
+        windowService.deleteWindow(window.getId());
+        System.out.println("after delete"+jobId);
+        List<Window> JobWindows = windowService.getWindowsForJob(jobId);
+        System.out.println("num of windows after delete "+JobWindows.size());
+        windows.put("WindowCreatedSuccessfully", JobWindows);
         return windows;
     }
 

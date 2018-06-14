@@ -31,4 +31,8 @@ public class WindowService {
 
         windowRepository.save(windowToUpdate);
     }
+
+    public void deleteWindow(Long windowId) {
+        windowRepository.deleteById(windowId);
+    }
 }

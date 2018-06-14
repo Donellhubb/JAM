@@ -70,7 +70,7 @@ class DoorEdit extends Component{
     return(
 
       <span>
-			<span data-toggle="modal" data-target={`#doorModal${this.props.index}`}>
+			<span data-toggle="modal" data-target={`#doorModal${this.props.index}`} id="editing">
 				<Glyphicon glyph="edit" /> 
 			 </span>
 

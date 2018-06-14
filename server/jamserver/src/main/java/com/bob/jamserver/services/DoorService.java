@@ -37,4 +37,8 @@ public class DoorService {
 		doorRepo.save(door);
 	}
 
+	public void deleteDoor(Long doorId) {
+		doorRepo.deleteById(doorId);
+	}
+
 }

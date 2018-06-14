@@ -16,6 +16,48 @@ class Review extends Component{
 		// this.handleWindowEdit = this.handleWindowEdit.bind(this);
  	}
 
+ 	deleteWindow(data){
+ 		// debugger
+ 		// console.log(data.id)
+ 		// const window_id = data.id
+ 		const deleted = axios({
+ 			method: "POST",
+ 			url: url.url +"delete/window",
+ 			data:{
+ 				job: data.job,
+ 				id: data.id,
+ 			}
+ 		}).then(data=>{
+ 			this.props.updateWindow(data);
+ 		})
+ 	}
+
+ 	 deleteCabinet(data){
+ 		const deleted = axios({
+ 			method: "POST",
+ 			url: url.url +"delete/cabinet",
+ 			data:{
+ 				job: data.job,
+ 				id: data.id
+ 			}
+ 		}).then(data=>{
+ 			this.props.updateCabinet(data);
+ 		})
+ 	}
+
+ 	 	deleteDoor(data){
+ 		const deleted = axios({
+ 			method: "POST",
+ 			url: url.url +"delete/door",
+ 			data:{
+ 				job: data.job,
+ 				id: data.id
+ 			}
+ 		}).then(data=>{
+ 			this.props.updateDoor(data);
+ 		})
+ 	}
+
 
  	getProducts(){
  		 // console.log(this.props.cabinet.data)
@@ -24,12 +66,12 @@ class Review extends Component{
  		 let windows
  		if(this.props.cabinet.data != undefined){
  			// console.log("Yoo")
- 			console.log(this.props.cabinet.data.CabinetCreatedSuccessfully)
+ 			// console.log(this.props.cabinet.data.CabinetCreatedSuccessfully)
  			cabinets = this.props.cabinet.data.CabinetCreatedSuccessfully.map((data, index)=>{
 			// console.log(this.props.cabinet.data.CabinetCreatedSuccessfully) 		
  			// console.log(index);
 
- 			console.log(data.color)
+ 			// console.log(data.color)
 
  				return(
 					<tr key = {index} className='cabinetList'>
@@ -42,12 +84,15 @@ class Review extends Component{
 						<td>{data.screws}</td>
 						<td>
 							<CabinetEdit index={index} cabinet={data} updateCabinet={this.props.updateCabinet}/>
-       					</td>	
+       					</td>
+          				<td>
+	       					<span className="glyphicon glyphicon-trash" id="trash" id='trash' onClick={()=>{this.deleteCabinet(data)}}></span>
+	       				</td>	
 					</tr>
  				)
+
  			});
  		}
-
 
  		if(this.props.door.data != undefined){
  			// console.log("YO")
@@ -63,6 +108,9 @@ class Review extends Component{
 						<td>{data.screws}</td>
 						<td>
 							<DoorEdit index={index} door={data} updateDoor={this.props.updateDoor} />
+	       				</td>
+	       				<td>
+	       					<span className="glyphicon glyphicon-trash" id="trash" id='trash' onClick={()=>{this.deleteDoor(data)}}></span>
 	       				</td>	
 					</tr>
 	 			)
@@ -84,7 +132,10 @@ class Review extends Component{
 						<td>{data.quantity}</td>
 						<td>
 							<WindowEdit index={index} window={data} updateWindow={this.props.updateWindow} />
-       					</td>		
+       					</td>
+            			<td>
+	       					<span className="glyphicon glyphicon-trash" id='trash' onClick={()=> {this.deleteWindow(data)}}></span>
+	       				</td>		
 					</tr>
  				)
  			})

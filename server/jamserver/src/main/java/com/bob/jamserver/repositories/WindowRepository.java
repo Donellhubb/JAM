@@ -12,6 +12,7 @@ public interface WindowRepository extends CrudRepository<Window,Long> {
 	List<Window> findAll();
 	List<Window>  findByJobIdOrderByIdDesc(Long id);
 	Window findWindowById(Long id);
+	void deleteById(Long id);
 
 
 }

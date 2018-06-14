@@ -89,7 +89,7 @@ class CabinetEdit extends Component{
 		// console.log(this.props.index)
 		return(
 			<span>
-				<span data-toggle="modal" data-target={`#cabinetModal${this.props.index}`}>
+				<span data-toggle="modal" data-target={`#cabinetModal${this.props.index}`} id="editing" >
 					<Glyphicon glyph="edit" /> 
 				</span>
 

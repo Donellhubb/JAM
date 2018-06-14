@@ -11,6 +11,7 @@ public interface DoorRepository extends CrudRepository<Door,Long> {
 	List<Door> findAll();
 	List<Door> findByJobIdOrderByIdDesc(Long id);
 	Door findDoorById(Long id);
+	void deleteById(Long id);
 
 
 }
