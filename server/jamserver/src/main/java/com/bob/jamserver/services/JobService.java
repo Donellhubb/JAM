@@ -47,5 +47,8 @@ public class JobService {
 		jobRepo.save(completedJob);
 		
 	}
+	public List<Job> jobsTodo(Long userId){
+		return jobRepo.findJobsByUserIdByCompletedTrue(userId);
+	}
 	
 }
